@@ -7,6 +7,7 @@ export const Container = styled.div`
   padding: 0 ${rem(16)};
   margin: 0 auto;
   flex: 1;
+  color: ${({ theme }) => theme.colors.offBlue};
 
   @media screen and (min-width: ${breakpoints.medium}) {
     max-width: ${containers.medium};
