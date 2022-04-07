@@ -11,7 +11,7 @@ type HeadProps = {
 export default function Seo({ session, description, url, preview }: HeadProps) {
   return (
     <NextHead>
-      <title>Hekto - {session}</title>
+      <title>Hekto | {session}</title>
       <link rel="shortcut icon" href="/favicon.png" />
       <link rel="shortcut icon" href="/img/icon-512.png" />
 

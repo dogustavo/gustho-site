@@ -1675,6 +1675,16 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
+effector-vue@^22.1.0:
+  version "22.1.0"
+  resolved "https://registry.yarnpkg.com/effector-vue/-/effector-vue-22.1.0.tgz#ad4d443e71c8249298afabd4710d935d241c8b2d"
+  integrity sha512-eoXoY01/oA0eFCl5N8YizRZQ15Hurq0lkejgsrkmD0joRzw3MH1lx4Y7tj3glM2Rq2y8Xefu1hxwBONnJH3hRg==
+
+effector@^22.2.0:
+  version "22.2.0"
+  resolved "https://registry.yarnpkg.com/effector/-/effector-22.2.0.tgz#61667313cbe4fddeb9983582c3b59e1aae3603ec"
+  integrity sha512-N0dDgEO3/b9InYkPsoSM5YSJgVwJ1bQ/DWHU7C6sm9+L1CrT6gat0pLvey/ljFPNdNKL0S6MW5DEmDUvzJe1Ng==
+
 electron-to-chromium@^1.4.84:
   version "1.4.106"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.106.tgz#e7a3bfa9d745dd9b9e597616cb17283cc349781a"
