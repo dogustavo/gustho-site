@@ -13,6 +13,11 @@ export const containers = {
 }
 
 export const colors = {
+  pink: '#FB2E86',
+  offBlue: '#151875',
+  red: '#FB2448',
+  blue: '#2F1AC4',
+  violet: '#7E33E0',
   white: '#FFF',
   black: '#000'
 }
