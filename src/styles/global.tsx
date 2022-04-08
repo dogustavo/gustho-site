@@ -14,6 +14,8 @@ export default createGlobalStyle`
         font-family: 'Josefin Sans', sans-serif;
         font-size: 4.44vw;
         scroll-behavior: smooth;
+        overflow-x: hidden;
+        height: 100%;
 
         @media (min-width: 576px) {
             font-size: 3vw;
@@ -25,6 +27,11 @@ export default createGlobalStyle`
             font-size: 0.8333333333vw;
         }
     }
+
+    a {
+        text-decoration: none;
+    }
+
     a, button {
         &:hover {
             cursor: pointer;

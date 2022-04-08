@@ -1,6 +1,8 @@
 import { ReactNode } from 'react'
 import Head from 'next/head'
 
+import { Header } from 'components'
+
 type HeadProps = {
   children: ReactNode
   session: string
@@ -21,9 +23,9 @@ export default function LayoutDefault({
       <Head>
         <title>Gustho | {session}</title>
         <link rel="shortcut icon" href="/favicon.png" />
-        <link rel="shortcut icon" href="/img/icon-512.png" />
+        <link rel="shortcut icon" href="/static/img/icon-512.png" />
 
-        <link rel="apple-touch-icon" href="/img/icon-512.png" />
+        <link rel="apple-touch-icon" href="/static/img/icon-512.png" />
 
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content={description} />
@@ -39,6 +41,7 @@ export default function LayoutDefault({
         <meta property="og:type" content="website" />
       </Head>
 
+      <Header />
       <main>{children}</main>
     </>
   )

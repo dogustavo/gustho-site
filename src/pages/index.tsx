@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <LayoutDefault session={'Início'}>
       <Container>
-        <h1>Boilerplate Nextjs</h1>
+        <p>Boilerplate Nextjs</p>
       </Container>
     </LayoutDefault>
   )

@@ -19,7 +19,7 @@ export const colors = {
   blue: '#2F1AC4',
   violet: '#7E33E0',
   white: '#FFF',
-  black: '#000'
+  black: '#0D0E43'
 }
 
 export const fonts = {
