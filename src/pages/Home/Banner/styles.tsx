@@ -13,6 +13,11 @@ export const List = styled.div`
 
       text-align: left;
 
+      @media (max-width: ${breakpoints.small}) {
+        left: 0;
+        text-align: center;
+      }
+
       li {
         display: inline-block;
 

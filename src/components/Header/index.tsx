@@ -1,7 +1,7 @@
 import { ReactNode, useState } from 'react'
 import Link from 'next/link'
 
-import Container from '../Container'
+import { Container, Menu } from 'components'
 
 import * as S from './styles'
 import { useWindowSize } from 'hooks'
@@ -69,12 +69,10 @@ export default function Header() {
           <img src="/static/img/logo.svg" alt="Logo da loja Gustho" />
 
           {width < 450 && (
-            <S.Menu isOpen={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
-              <span />
-              <span />
-              <span />
-            </S.Menu>
+            <Menu isOpen={menuOpen} action={() => setMenuOpen(!menuOpen)} />
           )}
+
+          <S.Overlay isOpen={menuOpen} onClick={() => setMenuOpen(false)} />
 
           <S.Nav isOpen={menuOpen}>
             <Link href="/">
