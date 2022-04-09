@@ -23,10 +23,24 @@ export const Cart = styled.button`
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease;
+
+  @media (min-width: ${breakpoints.large}) {
+    width: 40px;
+    height: 40px;
+
+    img {
+      width: 25px;
+    }
+  }
+
+  @media (max-width: ${breakpoints.medium}) {
+    left: 4rem;
+  }
 `
 
 export const Wrapper = styled.div`
   ${baseDispleyStyles}
+  width: 100%;
   gap: 14px;
   padding: 12px;
   background-color: ${({ theme }) => theme.colors.white};
@@ -51,8 +65,9 @@ export const Price = styled.p`
 export const Description = styled.p`
   font-family: 'Lato';
   font-style: normal;
-  font-size: 1rem;
+  font-size: 11px;
   line-height: 1.2rem;
+  align-self: flex-start;
   color: ${({ theme }) => theme.colors.gray};
 
   transition: 0.5s ease;
@@ -62,6 +77,7 @@ export const Description = styled.p`
 `
 
 export const Product = styled.div`
+  ${baseDispleyStyles}
   position: relative;
 
   @media (hover: hover) {
@@ -91,10 +107,14 @@ export const Card = styled.a`
   max-width: 270px;
 
   @media (min-width: ${breakpoints.large}) {
-    max-width: 330px;
+    max-width: 24rem;
   }
 `
 
 export const Image = styled.img`
   width: 100%;
+
+  @media (min-width: ${breakpoints.large}) {
+    width: 24rem;
+  }
 `

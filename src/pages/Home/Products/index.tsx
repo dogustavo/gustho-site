@@ -1,6 +1,7 @@
-import { Container, Product } from 'components'
+import { Product } from 'components'
 
 import * as S from './styles'
+import Article from '../template'
 
 const products = [
   {
@@ -75,14 +76,11 @@ export default function FeaturedProducts() {
   }
 
   return (
-    <S.Products>
-      <Container>
-        <>
-          <h2>Produtos Selecionados</h2>
-
-          <S.Wrapper>{renderProductsList()}</S.Wrapper>
-        </>
-      </Container>
-    </S.Products>
+    <Article>
+      <>
+        <h2>Produtos Selecionados</h2>
+        <S.Wrapper>{renderProductsList()}</S.Wrapper>
+      </>
+    </Article>
   )
 }
