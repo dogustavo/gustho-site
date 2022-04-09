@@ -29,6 +29,7 @@ const settings = {
 export default function Banner({ data }: IBannerDate) {
   return (
     <article>
+      <h1 aria-label="Gustho | A loja feita para você" />
       <S.List>
         <Slider {...settings}>
           {data.map(({ id, image, desc }) => (
@@ -40,6 +41,8 @@ export default function Banner({ data }: IBannerDate) {
                   layout="fill"
                   objectFit="cover"
                   alt={desc}
+                  placeholder="empty"
+                  priority
                 />
               </S.WrapImage>
             </div>

@@ -10,6 +10,8 @@ declare module 'styled-components' {
       violet: string
       white: string
       black: string
+      gray: string
+      shade: string
     }
     fonts: {
       light: number

@@ -19,7 +19,9 @@ export const colors = {
   blue: '#2F1AC4',
   violet: '#7E33E0',
   white: '#FFF',
-  black: '#0D0E43'
+  black: '#0D0E43',
+  gray: '#9295AA',
+  shade: '#EEEFFB'
 }
 
 export const fonts = {

@@ -1,6 +1,6 @@
 import { LayoutDefault } from 'layout'
 
-import { Banner } from './Home'
+import { Banner, FeaturedProducts } from './Home'
 
 const bannerData = [
   {
@@ -24,6 +24,7 @@ export default function Home() {
   return (
     <LayoutDefault session={'Início'}>
       <Banner data={bannerData} />
+      <FeaturedProducts />
     </LayoutDefault>
   )
 }

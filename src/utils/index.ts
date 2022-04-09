@@ -1,3 +1,3 @@
-import rem from './styleSizes'
+import convertMonetary, { priceDivided } from './convertMonetary'
 
-export { rem }
+export { convertMonetary, priceDivided }

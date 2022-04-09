@@ -22,7 +22,6 @@ export default function LayoutDefault({
     <>
       <Head>
         <title>Gustho | {session}</title>
-        <link rel="shortcut icon" href="/favicon.png" />
         <link rel="shortcut icon" href="/static/img/icon-512.png" />
 
         <link rel="apple-touch-icon" href="/static/img/icon-512.png" />

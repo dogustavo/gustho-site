@@ -1,10 +1,8 @@
 import styled from 'styled-components'
 import { breakpoints, containers } from 'styles'
 
-import { rem } from 'utils'
-
 export const Container = styled.div`
-  padding: 0 ${rem(16)};
+  padding: 0 1rem;
   margin: 0 auto;
   flex: 1;
   color: ${({ theme }) => theme.colors.offBlue};
