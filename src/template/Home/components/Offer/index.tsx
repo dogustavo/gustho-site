@@ -1,5 +1,4 @@
-import * as S from './styles'
-import Article from '../template'
+import { Article } from 'components'
 
 export default function FeaturedProducts() {
   return (
