@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { breakpoints } from 'styles'
 
 export const Products = styled.article`
   padding: 4rem 0;
@@ -18,4 +19,9 @@ export const Wrapper = styled.div`
   grid-gap: 2rem;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: ${breakpoints.small}) {
+    grid-template-columns: none;
+    grid-template-rows: 1fr;
+  }
 `

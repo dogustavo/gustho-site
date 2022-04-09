@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { breakpoints } from 'styles'
 
 const baseDispleyStyles = css`
   display: flex;
@@ -87,8 +88,13 @@ export const Product = styled.div`
 export const Card = styled.a`
   ${baseDispleyStyles}
   box-shadow: -4px 6px 20px rgba(0, 0, 0, 0.1);
+  max-width: 270px;
+
+  @media (min-width: ${breakpoints.large}) {
+    max-width: 330px;
+  }
 `
 
 export const Image = styled.img`
-  max-width: 270px;
+  width: 100%;
 `
