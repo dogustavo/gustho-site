@@ -74,6 +74,11 @@ export const Description = styled.p`
 
   opacity: 0;
   visibility: hidden;
+
+  @media (max-width: ${breakpoints.small}) {
+    opacity: 1;
+    visibility: visible;
+  }
 `
 
 export const Product = styled.div`

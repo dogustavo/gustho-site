@@ -25,8 +25,8 @@ export default function Home() {
     <LayoutDefault session={'Início'}>
       <Banner data={bannerData} />
       <FeaturedProducts />
-      <Offer />
       <SectionBanner />
+      <Offer />
     </LayoutDefault>
   )
 }
