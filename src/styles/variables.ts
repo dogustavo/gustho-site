@@ -17,11 +17,12 @@ export const colors = {
   offBlue: '#151875',
   red: '#FB2448',
   blue: '#2F1AC4',
-  violet: '#7E33E0',
+  violet: '#  7E33E0',
   white: '#FFF',
   black: '#0D0E43',
   gray: '#9295AA',
-  shade: '#EEEFFB'
+  shade: '#EEEFFB',
+  subText: '#8A8FB9'
 }
 
 export const fonts = {

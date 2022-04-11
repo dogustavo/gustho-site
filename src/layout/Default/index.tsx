@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import Head from 'next/head'
 
-import { Header } from 'components'
+import { Header, Footer } from 'components'
 
 type HeadProps = {
   children: ReactNode
@@ -42,6 +42,7 @@ export default function LayoutDefault({
 
       <Header />
       <main>{children}</main>
+      <Footer />
     </>
   )
 }
