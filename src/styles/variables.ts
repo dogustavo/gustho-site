@@ -21,7 +21,10 @@ export const colors = {
   white: '#FFF',
   black: '#0D0E43',
   gray: '#9295AA',
-  shade: '#EEEFFB',
+  shade: {
+    light: '#EEEFFB',
+    dark: '#E7E4F8'
+  },
   subText: '#8A8FB9'
 }
 

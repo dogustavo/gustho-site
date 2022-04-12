@@ -3,24 +3,27 @@ import { Container } from 'components'
 
 import * as S from './styles'
 
-const footerItens = [
-  {
-    text: 'Lorem ipsum',
-    link: '/'
-  },
-  {
-    text: 'Lorem ipsum dolor',
-    link: '/'
-  },
-  {
-    text: 'Lorem ipsum',
-    link: '/'
-  },
-  {
-    text: 'Lorem ipsum dolor sit',
-    link: '/'
-  }
-]
+const footerData = {
+  title: 'Institucional',
+  items: [
+    {
+      text: 'Políticas de Privacidade',
+      link: '/'
+    },
+    {
+      text: 'Código de Conduta Ética',
+      link: '/'
+    },
+    {
+      text: 'Código de Defesa do Consumidor',
+      link: '/'
+    },
+    {
+      text: 'Trabalhe Conosco',
+      link: '/'
+    }
+  ]
+}
 
 export default function Footer() {
   return (
@@ -29,12 +32,20 @@ export default function Footer() {
         <S.Wrapper>
           <div>
             <img src="/static/img/logo.svg" alt="Logo da loja Gustho" />
-            <p>Contato</p>
-            <p>00 Lorem Ipsum, Lorem Ipsum Dolor, BR</p>
+
+            <S.Information>
+              <p>Endereço:</p>
+              <p>
+                Rua Lorem Ipsum, 000 - Centro
+                <br />
+                Itapetininga/SP
+              </p>
+            </S.Information>
           </div>
 
           <S.List>
-            {footerItens.map((item, id) => (
+            <p>{footerData.title}</p>
+            {footerData.items.map((item, id) => (
               <li key={id}>
                 <Link href={item.link}>
                   <a>{item.text}</a>
@@ -44,6 +55,9 @@ export default function Footer() {
           </S.List>
         </S.Wrapper>
       </Container>
+      <S.FooterLine>
+        <p>© {new Date().getFullYear()} by Gustho</p>
+      </S.FooterLine>
     </S.Footer>
   )
 }

@@ -1,8 +1,16 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { breakpoints } from 'styles'
+
+const sharedText = css`
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+`
 
 export const Footer = styled.footer`
   padding-top: 6rem;
-  background-color: ${({ theme }) => theme.colors.shade};
+  background-color: ${({ theme }) => theme.colors.shade.light};
 `
 
 export const Wrapper = styled.div`
@@ -11,17 +19,48 @@ export const Wrapper = styled.div`
   align-items: center;
 
   padding-bottom: 7rem;
+
+  @media (max-width: ${breakpoints.small}) {
+    flex-direction: column;
+    gap: 2rem;
+  }
+`
+
+export const Information = styled.div`
+  margin-top: 1.2rem;
+
+  p {
+    ${sharedText}
+    color: ${({ theme }) => theme.colors.subText};
+    margin-bottom: 5px;
+    line-height: 14px;
+
+    @media (max-width: ${breakpoints.small}) {
+      line-height: 18px;
+    }
+  }
 `
 
 export const List = styled.ul`
+  text-align: right;
+
+  @media (max-width: ${breakpoints.small}) {
+    text-align: left;
+  }
+
+  p {
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    margin-bottom: 2.2rem;
+    color: ${({ theme }) => theme.colors.black};
+  }
+
   li {
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-    text-align: right;
+    ${sharedText}
     margin-bottom: 1.2rem;
+    line-height: 19px;
   }
 
   a {
@@ -31,5 +70,17 @@ export const List = styled.ul`
     &:hover {
       color: ${({ theme }) => theme.colors.pink};
     }
+  }
+`
+
+export const FooterLine = styled.div`
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+  background-color: ${({ theme }) => theme.colors.shade.dark};
+
+  p {
+    ${sharedText}
+    color: ${({ theme }) => theme.colors.subText};
   }
 `

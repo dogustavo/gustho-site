@@ -77,10 +77,8 @@ export default function FeaturedProducts() {
 
   return (
     <Article>
-      <>
-        <h2>Produtos Selecionados</h2>
-        <S.Wrapper>{renderProductsList()}</S.Wrapper>
-      </>
+      <h2>Produtos Selecionados</h2>
+      <S.Wrapper>{renderProductsList()}</S.Wrapper>
     </Article>
   )
 }

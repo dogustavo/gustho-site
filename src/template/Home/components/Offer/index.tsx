@@ -45,10 +45,8 @@ export default function FeaturedProducts() {
 
   return (
     <Article>
-      <>
-        <h2>O que oferecemos!</h2>
-        <S.Wrapper>{renderBennefits()}</S.Wrapper>
-      </>
+      <h2>O que oferecemos!</h2>
+      <S.Wrapper>{renderBennefits()}</S.Wrapper>
     </Article>
   )
 }
