@@ -17,14 +17,6 @@ const footerItens = [
     link: '/'
   },
   {
-    text: 'Lorem dolor',
-    link: '/'
-  },
-  {
-    text: 'Ipsum dolor',
-    link: '/'
-  },
-  {
     text: 'Lorem ipsum dolor sit',
     link: '/'
   }
