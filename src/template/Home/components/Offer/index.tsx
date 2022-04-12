@@ -23,7 +23,7 @@ const bennefists = [
   },
   {
     icon: '/static/img/support.svg',
-    title: 'Suport 24 horas',
+    title: 'Suporte 24 horas',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.'
   }
