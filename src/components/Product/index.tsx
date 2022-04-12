@@ -14,7 +14,7 @@ export default function Product(product: IProduct) {
           alt="icone para adicionar ao carinho"
         />
       </S.Cart>
-      <Link href={`/produto/${product.slug}`}>
+      <Link href={`/produtos/${product.slug}`}>
         <S.Card>
           <S.Image src={product.image_url} alt={`Produto ${product.name}`} />
 

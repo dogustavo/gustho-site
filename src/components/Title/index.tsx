@@ -2,15 +2,11 @@ import { Container } from 'components'
 import Link from 'next/link'
 
 import * as S from './styles'
+import { IBreadcrumbs } from 'types'
 
 interface ITitle {
   title: string
-  breadcrumbs: Breadcrumbs[]
-}
-
-interface Breadcrumbs {
-  route: string
-  url: string
+  breadcrumbs: IBreadcrumbs[]
 }
 
 export default function Title({ title, breadcrumbs }: ITitle) {

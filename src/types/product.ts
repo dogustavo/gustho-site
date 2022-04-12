@@ -6,3 +6,8 @@ export interface IProduct {
   price: number
   image_url: string
 }
+
+export interface IBreadcrumbs {
+  route: string
+  url: string
+}
