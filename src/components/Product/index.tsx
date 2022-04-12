@@ -3,14 +3,7 @@ import { convertMonetary, priceDivided } from 'utils'
 
 import * as S from './styles'
 
-interface IProduct {
-  id: string
-  name: string
-  slug: string
-  description: string
-  price: number
-  image_url: string
-}
+import { IProduct } from 'types'
 
 export default function Product(product: IProduct) {
   return (

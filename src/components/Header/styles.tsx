@@ -71,7 +71,7 @@ export const Nav = styled.nav<IMenu>`
 
   @media (max-width: ${breakpoints.small}) {
     position: absolute;
-    height: 50vh;
+    height: 105vh;
     z-index: 3;
     width: 70%;
     background-color: ${({ theme }) => theme.colors.violet};

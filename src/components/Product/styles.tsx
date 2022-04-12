@@ -114,6 +114,10 @@ export const Card = styled.a`
   @media (min-width: ${breakpoints.large}) {
     max-width: 24rem;
   }
+
+  @media (max-width: ${breakpoints.small}) {
+    min-width: 18rem;
+  }
 `
 
 export const Image = styled.img`

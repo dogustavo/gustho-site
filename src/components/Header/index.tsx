@@ -78,7 +78,7 @@ export default function Header() {
             <Link href="/">
               <a>Início</a>
             </Link>
-            <Link href="/">
+            <Link href="/produtos">
               <a>Produtos</a>
             </Link>
             <Link href="/">
