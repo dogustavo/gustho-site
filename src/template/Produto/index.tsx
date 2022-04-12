@@ -1,16 +1,18 @@
 import { LayoutDefault } from 'layout'
 import { Title } from 'components'
 
-import { IBreadcrumbs } from 'types'
+import { IBreadcrumbs, IProductDetalied } from 'types'
 
 interface IProps {
   breadcrumbs: IBreadcrumbs[]
+  product: IProductDetalied
 }
 
-export default function Produto({ breadcrumbs }: IProps) {
+export default function Produto({ breadcrumbs, product }: IProps) {
+  console.log(product)
   return (
     <LayoutDefault session={'Produto'}>
-      <Title title="Produto 1" breadcrumbs={breadcrumbs} />
+      <Title title="Detalhes do Produto" breadcrumbs={breadcrumbs} />
       <section>
         <h1>asdasdsad</h1>
       </section>
