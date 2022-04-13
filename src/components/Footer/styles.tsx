@@ -22,6 +22,7 @@ export const Wrapper = styled.div`
 
   @media (max-width: ${breakpoints.small}) {
     flex-direction: column;
+    align-items: flex-start;
     gap: 2rem;
   }
 `

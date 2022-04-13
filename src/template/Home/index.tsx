@@ -5,17 +5,26 @@ import { Banner, FeaturedProducts, Offer, SectionBanner } from './components'
 const bannerData = [
   {
     id: 'a16ce57e-b76a-11ec-b909-0242ac120002',
-    image: '/static/img/banner/promotional.png',
+    image: [
+      '/static/img/banner/promotional.png',
+      '/static/img/banner/promotional-mob.png'
+    ],
     desc: 'imagem 1'
   },
   {
     id: 'bad395b2-b76a-11ec-b909-0242ac120002',
-    image: '/static/img/banner/promotional.png',
+    image: [
+      '/static/img/banner/promotional.png',
+      '/static/img/banner/promotional-mob.png'
+    ],
     desc: 'imagem 2'
   },
   {
     id: 'c88ae2f0-b76a-11ec-b909-0242ac120002',
-    image: '/static/img/banner/promotional.png',
+    image: [
+      '/static/img/banner/promotional.png',
+      '/static/img/banner/promotional-mob.png'
+    ],
     desc: 'imagem 3'
   }
 ]

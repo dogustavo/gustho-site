@@ -5,15 +5,16 @@ import { useWindowSize } from 'hooks'
 import * as S from './styles'
 
 export default function SectionBanner() {
-  const image =
-    useWindowSize() < 450
-      ? '/static/img/section-mobile.png'
-      : '/static/img/section-desktop.png'
+  const isMobile = useWindowSize()
 
   return (
     <S.Section>
       <Image
-        src={image}
+        src={
+          isMobile < 450
+            ? '/static/img/section-mobile.png'
+            : '/static/img/section-desktop.png'
+        }
         quality={85}
         layout="fill"
         objectFit="cover"

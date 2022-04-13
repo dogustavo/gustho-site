@@ -1,3 +1,4 @@
+import { useWindowSize } from 'hooks'
 import Image from 'next/image'
 import Slider from 'react-slick'
 
@@ -9,7 +10,7 @@ interface IBannerDate {
 
 interface Banner {
   id: string
-  image: string
+  image: string[]
   desc: string
 }
 
@@ -27,6 +28,8 @@ const settings = {
 }
 
 export default function Banner({ data }: IBannerDate) {
+  const isMobile = useWindowSize()
+
   return (
     <article>
       <h1 aria-label="Gustho | A loja feita para você" />
@@ -36,7 +39,7 @@ export default function Banner({ data }: IBannerDate) {
             <div key={id}>
               <S.WrapImage>
                 <Image
-                  src={image}
+                  src={isMobile > 450 ? image[0] : image[1]}
                   quality={85}
                   layout="fill"
                   objectFit="cover"
