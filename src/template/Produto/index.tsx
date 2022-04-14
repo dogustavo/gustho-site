@@ -9,7 +9,6 @@ interface IProps {
 }
 
 export default function Produto({ breadcrumbs, product }: IProps) {
-  console.log(product)
   return (
     <LayoutDefault session={'Produto'}>
       <Title title="Detalhes do Produto" breadcrumbs={breadcrumbs} />
