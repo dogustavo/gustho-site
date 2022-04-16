@@ -1,4 +1,5 @@
-import { Container, Product } from 'components'
+import { useForm, FormProvider } from 'react-hook-form'
+import { Container, Product, Input } from 'components'
 import { IProduct } from 'types'
 
 import * as S from './styles'
@@ -8,6 +9,11 @@ interface IProducts {
 }
 
 export default function List({ products }: IProducts) {
+  const methods = useForm()
+
+  const onSubmit = methods.handleSubmit(async (values) => {
+    console.log(values)
+  })
   const renderProductsList = () => {
     return products.map((product) => <Product {...product} key={product.id} />)
   }
@@ -15,6 +21,11 @@ export default function List({ products }: IProducts) {
   return (
     <article>
       <Container>
+        <FormProvider {...methods}>
+          <Input name="search" required={true} label="Buscar" type="text" />
+
+          <button onClick={onSubmit}>Teste</button>
+        </FormProvider>
         <S.Wrapper>{renderProductsList()}</S.Wrapper>
       </Container>
     </article>

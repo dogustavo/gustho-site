@@ -6,5 +6,16 @@ import Article from './Article'
 import Title from './Title'
 import Footer from './Footer'
 import Button from './Button'
+import Input from './Input'
 
-export { Container, Header, Menu, Product, Title, Article, Footer, Button }
+export {
+  Container,
+  Header,
+  Menu,
+  Product,
+  Title,
+  Article,
+  Footer,
+  Button,
+  Input
+}
