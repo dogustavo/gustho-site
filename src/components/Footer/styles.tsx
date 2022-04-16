@@ -10,7 +10,7 @@ const sharedText = css`
 
 export const Footer = styled.footer`
   padding-top: 6rem;
-  background-color: ${({ theme }) => theme.colors.shade.light};
+  background-color: ${({ theme }) => theme.colors.shade.dark};
 `
 
 export const Wrapper = styled.div`
@@ -78,7 +78,7 @@ export const FooterLine = styled.div`
   width: 100%;
   text-align: center;
   padding: 1rem 0;
-  background-color: ${({ theme }) => theme.colors.shade.dark};
+  background-color: ${({ theme }) => theme.colors.shade.light};
 
   p {
     ${sharedText}

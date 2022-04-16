@@ -14,6 +14,7 @@ declare module 'styled-components' {
       shade: {
         light: string
         dark: string
+        text: string
       }
       subText: string
     }
