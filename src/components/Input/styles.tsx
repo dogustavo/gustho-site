@@ -45,6 +45,7 @@ export const Input = styled.input`
 
 export const Content = styled.div<IFocus>`
   position: relative;
+  width: 100%;
 
   ${({ isFocused, hasError, theme }) =>
     isFocused &&

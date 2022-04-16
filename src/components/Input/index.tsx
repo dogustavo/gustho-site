@@ -6,7 +6,7 @@ import * as S from './styles'
 interface IProps {
   label: string
   name: string
-  required: boolean
+  required?: boolean
   type: string
   onChange?: (arg: string) => string
 }
