@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { breakpoints } from 'styles'
 
 interface IPic {
   selected: boolean
@@ -19,6 +20,7 @@ const generalText = css`
 
 export const WrappProduct = styled.div`
   ${generalDisplay}
+  margin: 3rem 0;
 `
 
 export const Product = styled.div`
@@ -31,19 +33,36 @@ export const Product = styled.div`
   box-shadow: -4px 6px 20px rgba(0, 0, 0, 0.1);
   padding: 1rem;
 
-  margin: 3rem 0;
+  @media (max-width: ${breakpoints.small}) {
+    max-width: 100%;
+    grid-template-columns: none;
+    grid-template-rows: 38% 1fr;
+    align-items: flex-start;
+    grid-gap: 1rem;
+  }
 `
 
 export const Gallery = styled.div`
   display: grid;
   grid-template-columns: 9rem 1fr;
   grid-gap: 21px;
+
+  @media (max-width: ${breakpoints.small}) {
+    max-width: 100%;
+    grid-template-columns: none;
+    grid-template-rows: 1fr 5rem;
+  }
 `
 
 export const Aside = styled.aside`
   display: flex;
   flex-direction: column;
   gap: 21px;
+
+  @media (max-width: ${breakpoints.small}) {
+    flex-direction: row;
+    grid-row: 2;
+  }
 `
 
 export const Image = styled.div<IPic>`
@@ -53,6 +72,10 @@ export const Image = styled.div<IPic>`
 
   img {
     width: 100%;
+  }
+
+  @media (max-width: ${breakpoints.small}) {
+    height: 100%;
   }
 
   ${({ selected }) =>
@@ -70,6 +93,11 @@ export const MainImage = styled.div`
 
   img {
     width: 100%;
+  }
+
+  @media (max-width: ${breakpoints.small}) {
+    width: 100%;
+    height: 15rem;
   }
 `
 
@@ -95,6 +123,14 @@ export const Wrapper = styled.div`
     font-size: 2.6rem;
     line-height: 2rem;
   }
+
+  @media (max-width: ${breakpoints.small}) {
+    margin-bottom: 1.5rem;
+
+    h3 {
+      margin-bottom: 1.5rem;
+    }
+  }
 `
 
 export const Details = styled.div`
@@ -112,6 +148,10 @@ export const DetailsList = styled.div`
   p {
     color: ${({ theme }) => theme.colors.offBlue};
     margin-bottom: 1rem;
+  }
+
+  @media (max-width: ${breakpoints.small}) {
+    margin-bottom: 1.5rem;
   }
 `
 
