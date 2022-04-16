@@ -11,7 +11,7 @@ export interface IProductDetalied {
   name: string
   price: number
   quantity: number
-  image: string[]
+  images: string[]
   short_description: string
   description: string
 }

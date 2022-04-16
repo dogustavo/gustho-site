@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
   const mock = {
     name: 'Nintendo Switch 32GB',
-    price: '2288.99',
+    price: 2288.99,
     quantity: 36,
     images: [
       'https://http2.mlstatic.com/D_NQ_NP_2X_847299-MLA40692342173_022020-F.webp',
@@ -41,18 +41,15 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       'https://http2.mlstatic.com/D_NQ_NP_2X_785368-MLA40692089525_022020-F.webp'
     ],
     short_description: `
-      <ul>
-        <li>O que você precisa saber sobre este produto</li>
-        <li>Inclui 2 controles.</li>
-        <li>Resolução de 1920px x 1080px.</li>
-        <li>Memória RAM de 4GB.</li>
-        <li>Tem tela tátil.</li>
-        <li>Horas de diversão garantidas.</li>
-        <li>
-          Conta com: 1 joy-con grip, 2 correias para joy-con, 1 dock, 1 cabo
-          hdmi, 1 adaptador de corrente.
-        </li>
-      </ul>
+      <li>Inclui 2 controles.</li>
+      <li>Resolução de 1920px x 1080px.</li>
+      <li>Memória RAM de 4GB.</li>
+      <li>Tem tela tátil.</li>
+      <li>Horas de diversão garantidas.</li>
+      <li>
+        Conta com: 1 joy-con grip, 2 correias para joy-con, 1 dock, 1 cabo
+        hdmi, 1 adaptador de corrente.
+      </li>
     `,
     description: `
       <p>
