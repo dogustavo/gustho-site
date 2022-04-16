@@ -22,9 +22,11 @@ export default function List({ products }: IProducts) {
     <article>
       <Container>
         <FormProvider {...methods}>
-          <Input name="search" required={true} label="Buscar" type="text" />
+          <div>
+            <Input name="search" required={true} label="Buscar" type="text" />
 
-          <button onClick={onSubmit}>Teste</button>
+            <button onClick={onSubmit}>Teste</button>
+          </div>
         </FormProvider>
         <S.Wrapper>{renderProductsList()}</S.Wrapper>
       </Container>

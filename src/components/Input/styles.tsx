@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 
 interface IFocus {
   isFocused: boolean
+  hasError: boolean
 }
 
 const communTex = css`
@@ -45,17 +46,24 @@ export const Input = styled.input`
 export const Content = styled.div<IFocus>`
   position: relative;
 
-  ${({ isFocused }) =>
+  ${({ isFocused, hasError, theme }) =>
     isFocused &&
     css`
       ${Label} {
         opacity: 1;
         visibility: visible;
         top: 0.8rem;
+        color: ${hasError ? theme.colors.red : theme.colors.blue};
       }
 
       ${Input} {
-        border: 1px solid ${({ theme }) => theme.colors.violet};
+        border-color: ${hasError ? theme.colors.red : theme.colors.violet};
       }
     `}
+`
+
+export const Error = styled.p`
+  ${communTex}
+  text-align: right;
+  color: ${({ theme }) => theme.colors.red};
 `

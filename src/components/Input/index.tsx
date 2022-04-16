@@ -7,7 +7,7 @@ interface IProps {
   label: string
   name: string
   required: boolean
-  type?: string
+  type: string
   onChange?: (arg: string) => string
 }
 
@@ -18,7 +18,11 @@ export default function Input({
   required,
   type
 }: IProps) {
-  const { control, getValues } = useFormContext()
+  const {
+    control,
+    getValues,
+    formState: { errors }
+  } = useFormContext()
 
   const [focus, setFocus] = useState(false)
 
@@ -47,11 +51,12 @@ export default function Input({
 
   const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.value) setFocus(false)
+
     return e.target.value
   }
 
   return (
-    <S.Content isFocused={focus}>
+    <S.Content isFocused={focus} hasError={!!errors[name]}>
       <S.Label htmlFor={name}>{label}</S.Label>
 
       <Controller
@@ -73,6 +78,8 @@ export default function Input({
           )
         }}
       />
+
+      {errors[name] && <S.Error>{errors[name].message}</S.Error>}
     </S.Content>
   )
 }
