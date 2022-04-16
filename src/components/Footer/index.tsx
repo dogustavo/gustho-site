@@ -8,19 +8,19 @@ const footerData = {
   items: [
     {
       text: 'Políticas de Privacidade',
-      link: '/'
+      link: '/politicas-privacidade'
     },
     {
       text: 'Código de Conduta Ética',
-      link: '/'
+      link: '/codigo-de-conduta-etica'
     },
     {
       text: 'Código de Defesa do Consumidor',
-      link: '/'
+      link: '/defesa-do-consumidor'
     },
     {
       text: 'Trabalhe Conosco',
-      link: '/'
+      link: '/trabalhe-conosco'
     }
   ]
 }

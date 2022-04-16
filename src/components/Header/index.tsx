@@ -84,9 +84,6 @@ export default function Header() {
             <Link href="/">
               <a>Sobre nós</a>
             </Link>
-            <Link href="/">
-              <a>Contato</a>
-            </Link>
           </S.Nav>
         </S.NavWrapper>
       </Container>

@@ -15,7 +15,7 @@ export default createGlobalStyle`
         font-size: 4.44vw;
         scroll-behavior: smooth;
         overflow-x: hidden;
-        height: 100%;
+        min-height: 100%;
 
         @media (min-width: 576px) {
             font-size: 3vw;

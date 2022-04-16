@@ -93,7 +93,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
   return {
     props: {
-      breadcrumbs: breadcrumbs,
+      breadcrumbs,
       product: mock
     }
   }
