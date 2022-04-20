@@ -2,5 +2,6 @@ import Home from './Home'
 import Produtos from './Produtos'
 import Produto from './Produto'
 import Institucional from './Institucional'
+import TemplateLogin from './Login'
 
-export { Home, Produtos, Produto, Institucional }
+export { Home, Produtos, Produto, Institucional, TemplateLogin }

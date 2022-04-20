@@ -1,23 +1,21 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, {
+  useCallback,
+  useEffect,
+  useState,
+  InputHTMLAttributes
+} from 'react'
 import { useFormContext, Controller } from 'react-hook-form'
 
 import * as S from './styles'
 
-interface IProps {
+interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string
   name: string
   required?: boolean
   type: string
-  onChange?: (arg: string) => string
 }
 
-export default function Input({
-  label,
-  name,
-  onChange,
-  required,
-  type
-}: IProps) {
+export default function Input({ label, name, required, type }: IProps) {
   const {
     control,
     getValues,
@@ -42,11 +40,7 @@ export default function Input({
   }, [handleFocus])
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    if (typeof onChange === 'function') {
-      return onChange(evt.target.value)
-    }
-
-    return evt.target.value
+    return evt
   }
 
   const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {

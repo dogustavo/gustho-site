@@ -25,12 +25,12 @@ export default function List({ products }: IProducts) {
           <S.Filter>
             <p>Buscar por:</p>
 
-            <div>
+            <form onSubmit={onSubmit}>
               <Input name="search" label="Buscar" type="text" />
-              <button onClick={onSubmit}>
+              <button>
                 <img src="/static/img/search.svg" alt="Icone lupa" />
               </button>
-            </div>
+            </form>
           </S.Filter>
         </FormProvider>
         <S.Wrapper>{renderProductsList()}</S.Wrapper>

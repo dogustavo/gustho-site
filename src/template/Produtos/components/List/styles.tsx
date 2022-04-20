@@ -33,7 +33,7 @@ export const Filter = styled.div`
     line-height: 1.3rem;
   }
 
-  div {
+  form {
     width: 25rem;
     display: flex;
   }
