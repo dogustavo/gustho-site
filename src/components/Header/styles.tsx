@@ -46,7 +46,7 @@ export const Wrapper = styled.div<IWrapper>`
   }
 `
 
-export const HeadingLink = styled.a`
+export const HeadingLink = styled.span`
   color: ${({ theme }) => theme.colors.white};
 `
 

@@ -46,19 +46,26 @@ export default function Header() {
             </HeadingButton>
 
             <S.Wrapper gap={1.5}>
-              <HeadingButton
-                icon="/static/img/cart.svg"
-                alt="Ícone de carrinho"
-              >
-                <Link href="/">
-                  <S.HeadingLink>Carrinho</S.HeadingLink>
-                </Link>
-              </HeadingButton>
-              <HeadingButton icon="/static/img/user.svg" alt="Ícone de usuário">
-                <Link href="/">
-                  <S.HeadingLink>Login</S.HeadingLink>
-                </Link>
-              </HeadingButton>
+              <Link href="/">
+                <a>
+                  <HeadingButton
+                    icon="/static/img/cart.svg"
+                    alt="Ícone de carrinho"
+                  >
+                    <S.HeadingLink>Carrinho</S.HeadingLink>
+                  </HeadingButton>
+                </a>
+              </Link>
+              <Link href="/">
+                <a>
+                  <HeadingButton
+                    icon="/static/img/user.svg"
+                    alt="Ícone de usuário"
+                  >
+                    <S.HeadingLink>Login</S.HeadingLink>
+                  </HeadingButton>
+                </a>
+              </Link>
             </S.Wrapper>
           </S.HeadingBarWrapper>
         </Container>
