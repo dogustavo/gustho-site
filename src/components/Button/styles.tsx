@@ -9,7 +9,7 @@ type buttonTypeOptions = {
 }
 
 interface IButton {
-  types: string
+  types?: string
 }
 
 const buttonType = (button: string) => {

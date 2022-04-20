@@ -14,6 +14,7 @@ export default function List({ products }: IProducts) {
   const onSubmit = methods.handleSubmit(async (values) => {
     console.log(values)
   })
+
   const renderProductsList = () => {
     return products.map((product) => <Product {...product} key={product.id} />)
   }

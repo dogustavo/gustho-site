@@ -3,7 +3,7 @@ import * as S from './styles'
 
 interface IButton {
   children: React.ReactNode
-  types: string
+  types?: string
 }
 
 export default function Button({ children, types }: IButton) {
