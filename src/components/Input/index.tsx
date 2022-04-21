@@ -7,15 +7,17 @@ import React, {
 import { useFormContext, Controller } from 'react-hook-form'
 
 import * as S from './styles'
+import { chooseMask } from 'utils'
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string
   name: string
   required?: boolean
   type: string
+  mask?: 'phone' | 'cpf' | 'date' | 'zipcode'
 }
 
-export default function Input({ label, name, required, type }: IProps) {
+export default function Input({ label, name, required, type, mask }: IProps) {
   const {
     control,
     getValues,
@@ -39,14 +41,18 @@ export default function Input({ label, name, required, type }: IProps) {
     handleFocus()
   }, [handleFocus])
 
-  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    return evt
-  }
-
   const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.value) setFocus(false)
 
     return e.target.value
+  }
+
+  const handleKeyUp = (evt: React.FormEvent<HTMLInputElement>) => {
+    if (mask) {
+      const teste = chooseMask({ evt, mask })
+      console.log(teste)
+      return chooseMask({ evt, mask })
+    }
   }
 
   return (
@@ -65,9 +71,9 @@ export default function Input({ label, name, required, type }: IProps) {
               type={type}
               placeholder={label}
               value={field.value || ''}
-              onChange={(e) => field.onChange(handleChange(e))}
               onBlur={(e) => handleBlur(e)}
               onFocus={() => setFocus(true)}
+              onKeyUp={handleKeyUp}
             />
           )
         }}

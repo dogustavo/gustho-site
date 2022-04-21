@@ -45,18 +45,21 @@ export default function TemplateCreate() {
                       name="birthdate"
                       label="Data de nascimento"
                       type="text"
+                      mask="date"
                       required={true}
                     />
                     <Input
-                      name="document"
+                      name="cpf"
                       label="CPF"
                       type="text"
+                      mask="cpf"
                       required={true}
                     />
                     <Input
                       name="phone"
                       label="Celular"
                       type="tel"
+                      mask="phone"
                       required={true}
                     />
                   </S.Inputs>
