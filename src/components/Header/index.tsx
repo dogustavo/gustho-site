@@ -56,7 +56,7 @@ export default function Header() {
                   </HeadingButton>
                 </a>
               </Link>
-              <Link href="/login">
+              <Link href="/auth">
                 <a>
                   <HeadingButton
                     icon="/static/img/user.svg"

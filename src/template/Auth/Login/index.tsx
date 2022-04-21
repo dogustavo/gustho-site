@@ -46,7 +46,7 @@ export default function TemplateLogin() {
 
                 <Button>Entrar</Button>
 
-                <Link href="/">
+                <Link href="/auth/criar">
                   <S.Action>Ainda não possui? Criar conta</S.Action>
                 </Link>
               </S.Form>
