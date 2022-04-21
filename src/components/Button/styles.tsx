@@ -33,9 +33,12 @@ const buttonType = (types = 'primary') => {
 
 export const Button = styled.button<IButton>`
   width: 100%;
-  padding: 12px 24px;
-  background-color: ${({ types }) => buttonType(types).background};
   color: ${({ types }) => buttonType(types).color};
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  padding: 1.3rem 1rem;
+  background-color: ${({ types }) => buttonType(types).background};
   transition: background 0.5s ease;
 
   @media (hover: hover) {

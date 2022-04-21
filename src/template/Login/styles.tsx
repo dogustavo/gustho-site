@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { breakpoints } from 'styles'
 
 const commonDisplay = css`
   display: flex;
@@ -20,6 +21,10 @@ export const Wrapper = styled.div`
   ${commonDisplay}
   width: 100%;
   margin: 7.5rem 0;
+
+  @media (max-width: ${breakpoints.small}) {
+    margin: 2rem 0;
+  }
 `
 
 export const Form = styled.form`
@@ -30,6 +35,11 @@ export const Form = styled.form`
 
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: -4px 6px 20px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: ${breakpoints.small}) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 `
 
 export const FormHeader = styled.div`
@@ -47,6 +57,11 @@ export const FormHeader = styled.div`
 
   p {
     ${commonText}
+    text-align: center;
+  }
+
+  @media (max-width: ${breakpoints.small}) {
+    margin-bottom: 1rem;
   }
 `
 
