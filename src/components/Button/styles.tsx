@@ -9,11 +9,11 @@ type buttonTypeOptions = {
 }
 
 interface IButton {
-  types?: string
+  types?: string | undefined
 }
 
-const buttonType = (button: string) => {
-  const types: buttonTypeOptions = {
+const buttonType = (types = 'primary') => {
+  const choose: buttonTypeOptions = {
     primary: {
       background: '#FB2E86',
       color: '#FFF',
@@ -28,7 +28,7 @@ const buttonType = (button: string) => {
     }
   }
 
-  return types[button] || types.primary
+  return choose[types]
 }
 
 export const Button = styled.button<IButton>`

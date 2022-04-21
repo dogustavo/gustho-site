@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 
 import { IBreadcrumbs } from 'types'
-import { data } from 'template/Institucional/data'
+import { data } from 'data/institucional'
 
 import { Institucional } from 'template'
 
