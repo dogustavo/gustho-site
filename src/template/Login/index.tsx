@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useForm, FormProvider } from 'react-hook-form'
 
 import { LayoutDefault } from 'layout'
@@ -14,22 +15,45 @@ export default function TemplateLogin() {
 
   return (
     <LayoutDefault session="Login">
-      <Container>
-        <S.Wrapper>
+      <article>
+        <Container>
           <FormProvider {...methods}>
-            <form onSubmit={onSubmit}>
-              <Input name="email" label="e-mail" type="email" required={true} />
-              <Input
-                name="password"
-                label="Senha"
-                type="password"
-                required={true}
-              />
-              <Button>Entrar</Button>
-            </form>
+            <S.Wrapper>
+              <S.Form onSubmit={onSubmit}>
+                <S.FormHeader>
+                  <h2>Login</h2>
+                  <p>Olá! Informe seu e-mail e senha para continuar.</p>
+                </S.FormHeader>
+
+                <S.Inputs>
+                  <Input
+                    name="email"
+                    label="e-mail"
+                    type="email"
+                    required={true}
+                  />
+                  <Input
+                    name="password"
+                    label="Senha"
+                    type="password"
+                    required={true}
+                  />
+                </S.Inputs>
+
+                <Link href="/">
+                  <S.Action>Esqueceu a senha?</S.Action>
+                </Link>
+
+                <Button>Entrar</Button>
+
+                <Link href="/">
+                  <S.Action>Ainda não possui? Criar conta</S.Action>
+                </Link>
+              </S.Form>
+            </S.Wrapper>
           </FormProvider>
-        </S.Wrapper>
-      </Container>
+        </Container>
+      </article>
     </LayoutDefault>
   )
 }

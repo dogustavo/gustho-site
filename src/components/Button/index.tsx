@@ -1,7 +1,7 @@
 import React from 'react'
 import * as S from './styles'
 
-interface IButton {
+interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode
   types?: string
 }
