@@ -1,4 +1,5 @@
 import { createStore } from 'effector'
+import { setCookie, destroyCookie } from 'nookies'
 
 import { AuthState } from './types'
 import * as actions from './actions'
@@ -10,7 +11,24 @@ export const $auth = createStore<AuthState>(initialStore, {
 })
 
 const signIn = (state: AuthState) => {
-  console.log('sim', state)
+  setCookie(null, 'userToken', state.token, {
+    maxAge: 60 * 60 * 24 * 31, //1 mes
+    path: '/'
+  })
+
+  return {
+    ...state,
+    isAuth: state.isAuth,
+    token: state.token
+  }
 }
 
-$auth.on(actions.userIsLogged, (_, data: AuthState) => signIn(data))
+const signOut = () => {
+  destroyCookie(null, 'userToken')
+
+  return initialStore
+}
+
+$auth
+  .on(actions.autorize, (_, data: AuthState) => signIn(data))
+  .on(actions.unautorize, () => signOut())

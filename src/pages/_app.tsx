@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 
+import { AuthProvider } from 'components'
 import GlobalStyles from 'styles/global'
 import * as theme from 'styles'
 
@@ -12,7 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <GlobalStyles />
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <AuthProvider>
+          <Component {...pageProps} />
+        </AuthProvider>
       </ThemeProvider>
     </>
   )

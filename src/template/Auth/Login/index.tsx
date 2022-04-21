@@ -9,16 +9,17 @@ import { useAuth } from 'models'
 
 export default function TemplateLogin() {
   const methods = useForm()
-  const { userIsLogged } = useAuth()
+  const { autorize } = useAuth()
 
   const onSubmit = methods.handleSubmit(async (values) => {
     console.log(values)
 
     const response = {
-      token: 'Funcionou'
+      token:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
     }
 
-    userIsLogged({
+    autorize({
       isAuth: !!response.token,
       token: response.token
     })

@@ -7,6 +7,7 @@ import Title from './Title'
 import Footer from './Footer'
 import Button from './Button'
 import Input from './Input'
+import AuthProvider from './Auth'
 
 export {
   Container,
@@ -17,5 +18,6 @@ export {
   Article,
   Footer,
   Button,
-  Input
+  Input,
+  AuthProvider
 }

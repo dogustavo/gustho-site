@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { ButtonHTMLAttributes } from 'react'
 import * as S from './styles'
 
-interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode
   types?: string
 }
 
-export default function Button({ children, types }: IButton) {
-  return <S.Button types={types}>{children}</S.Button>
+export default function Button({ children, types, ...rest }: IButton) {
+  return (
+    <S.Button {...rest} types={types}>
+      {children}
+    </S.Button>
+  )
 }
