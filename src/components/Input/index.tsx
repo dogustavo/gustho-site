@@ -49,8 +49,6 @@ export default function Input({ label, name, required, type, mask }: IProps) {
 
   const handleKeyUp = (evt: React.FormEvent<HTMLInputElement>) => {
     if (mask) {
-      const teste = chooseMask({ evt, mask })
-      console.log(teste)
       return chooseMask({ evt, mask })
     }
   }

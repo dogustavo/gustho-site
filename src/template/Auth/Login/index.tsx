@@ -5,12 +5,23 @@ import { LayoutDefault } from 'layout'
 import { Container, Input, Button } from 'components'
 
 import * as S from './styles'
+import { useAuth } from 'models'
 
 export default function TemplateLogin() {
   const methods = useForm()
+  const { userIsLogged } = useAuth()
 
   const onSubmit = methods.handleSubmit(async (values) => {
     console.log(values)
+
+    const response = {
+      token: 'Funcionou'
+    }
+
+    userIsLogged({
+      isAuth: !!response.token,
+      token: response.token
+    })
   })
 
   return (
@@ -26,18 +37,8 @@ export default function TemplateLogin() {
                 </S.FormHeader>
 
                 <S.Inputs>
-                  <Input
-                    name="email"
-                    label="e-mail"
-                    type="email"
-                    required={true}
-                  />
-                  <Input
-                    name="password"
-                    label="Senha"
-                    type="password"
-                    required={true}
-                  />
+                  <Input name="email" label="e-mail" type="email" />
+                  <Input name="password" label="Senha" type="password" />
                 </S.Inputs>
 
                 <Link href="/">
