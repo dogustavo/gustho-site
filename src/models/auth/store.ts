@@ -30,5 +30,5 @@ const signOut = () => {
 }
 
 $auth
-  .on(actions.autorize, (_, data: AuthState) => signIn(data))
+  .on(actions.autorize, (state, data) => signIn({ ...state, ...data }))
   .on(actions.unautorize, () => signOut())

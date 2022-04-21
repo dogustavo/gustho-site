@@ -1,6 +1,6 @@
 import { useAuth } from 'models'
 import { parseCookies } from 'nookies'
-import React, { useEffect, useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import api from 'service'
 
@@ -11,7 +11,7 @@ type IProvider = {
 export default function Provider({ children }: IProvider) {
   const { token, autorize } = useAuth()
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     api.defaults.headers.common.authorization = `Bearer ${token}`
   }, [token])
 
