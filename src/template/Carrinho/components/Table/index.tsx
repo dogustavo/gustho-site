@@ -1,5 +1,5 @@
 import { ICart } from 'types'
-
+import { convertMonetary } from 'utils'
 import * as S from './styles'
 
 interface IProps {
@@ -16,8 +16,12 @@ export default function Table({ data }: IProps) {
             <p>{cart.name}</p>
           </S.Product>
         </S.TD>
-        <S.TD>{cart.price}</S.TD>
-        <S.TD>Excluir</S.TD>
+        <S.TD>{convertMonetary(cart.price)}</S.TD>
+        <S.TD>
+          <button onClick={() => alert(`Limpando id ${cart.id}`)}>
+            <img src="/static/img/trash.svg" alt="Icone de lata de lixo" />{' '}
+          </button>
+        </S.TD>
       </tr>
     )
   }

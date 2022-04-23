@@ -25,6 +25,12 @@ const buttonType = (types = 'primary') => {
       color: '#151875',
       hover: '#FB2E86',
       hoverColor: '#FFF'
+    },
+    submit: {
+      background: '#19D16F',
+      color: '#FFF',
+      hover: '#151875',
+      hoverColor: '#FFF'
     }
   }
 
@@ -40,6 +46,7 @@ export const Button = styled.button<IButton>`
   padding: 1.3rem 1rem;
   background-color: ${({ types }) => buttonType(types).background};
   transition: background 0.5s ease;
+  border-radius: 5px;
 
   @media (hover: hover) {
     &:hover {

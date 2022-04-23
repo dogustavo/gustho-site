@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { breakpoints } from 'styles'
 
 export const Container = styled.table`
   width: 100%;
@@ -25,8 +26,8 @@ export const Product = styled.div`
   gap: 1rem;
 
   img {
-    width: 5.2rem;
-    height: 5.2rem;
+    width: 6.2rem;
+    height: 6.2rem;
     border-radius: 5px;
   }
 
@@ -36,5 +37,15 @@ export const Product = styled.div`
     line-height: 0.875rem;
 
     color: ${({ theme }) => theme.colors.black};
+  }
+
+  @media (max-width: ${breakpoints.small}) {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+
+    img {
+      width: 5rem;
+      height: 5rem;
+    }
   }
 `

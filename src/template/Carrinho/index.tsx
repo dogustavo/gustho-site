@@ -2,7 +2,7 @@ import { LayoutDefault } from 'layout'
 import { Title, Container } from 'components'
 import { IBreadcrumbs, ICart } from 'types'
 
-import { Table } from './components'
+import { Table, Totals } from './components'
 
 import * as S from './styles'
 
@@ -17,8 +17,12 @@ export default function Carrinho({ breadcrumbs, cart }: IProps) {
       <Title title="Carrinho" breadcrumbs={breadcrumbs} />
       <Container>
         <S.Wrapper>
-          <h1>Teste</h1>
           <Table data={cart} />
+          <S.Total>
+            <h3>Total do carrinho</h3>
+
+            <Totals data={cart} />
+          </S.Total>
         </S.Wrapper>
       </Container>
     </LayoutDefault>
