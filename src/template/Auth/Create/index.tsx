@@ -46,6 +46,7 @@ export default function TemplateCreate() {
                       label="Data de nascimento"
                       type="text"
                       mask="date"
+                      inputMode="numeric"
                       required={true}
                     />
                     <Input
@@ -53,12 +54,14 @@ export default function TemplateCreate() {
                       label="CPF"
                       type="text"
                       mask="cpf"
+                      inputMode="numeric"
                       required={true}
                     />
                     <Input
                       name="phone"
                       label="Celular"
                       type="tel"
+                      inputMode="tel"
                       mask="phone"
                       required={true}
                     />

@@ -32,7 +32,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   ]
 
   const mock = {
+    id: '1f550102-b805-11ec-b909-0242ac12t002',
     name: 'Nintendo Switch 32GB',
+    slug: 'nintendo-switch-32GB',
     price: 2288.99,
     quantity: 36,
     images: [

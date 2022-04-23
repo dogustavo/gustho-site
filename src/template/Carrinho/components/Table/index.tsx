@@ -12,7 +12,9 @@ export default function Table({ data }: IProps) {
       <tr key={cart.id}>
         <S.TD>
           <S.Product>
-            <img src={cart.image_url} alt={`Produto ${cart.name}`} />
+            <S.Image>
+              <img src={cart.image_url} alt={`Produto ${cart.name}`} />
+            </S.Image>
             <p>{cart.name}</p>
           </S.Product>
         </S.TD>

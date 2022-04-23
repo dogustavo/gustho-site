@@ -54,7 +54,8 @@ export const Filter = styled.div`
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
-    div {
+
+    form {
       width: 100%;
     }
   }

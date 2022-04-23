@@ -25,12 +25,6 @@ export const Product = styled.div`
   align-items: center;
   gap: 1rem;
 
-  img {
-    width: 6.2rem;
-    height: 6.2rem;
-    border-radius: 5px;
-  }
-
   p {
     font-weight: 400;
     font-size: 0.875rem;
@@ -47,5 +41,18 @@ export const Product = styled.div`
       width: 5rem;
       height: 5rem;
     }
+  }
+`
+export const Image = styled.div`
+  border-radius: 5px;
+  width: 6.2rem;
+  height: 6.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 100%;
+    object-fit: contain;
   }
 `

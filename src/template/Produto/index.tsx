@@ -6,6 +6,7 @@ import { IBreadcrumbs, IProductDetalied } from 'types'
 
 import * as S from './styles'
 import { useState } from 'react'
+import { useCheckout } from 'models/checkout/hooks'
 
 interface IProps {
   breadcrumbs: IBreadcrumbs[]
@@ -14,6 +15,22 @@ interface IProps {
 
 export default function Produto({ breadcrumbs, product }: IProps) {
   const [mainImage, setMainImage] = useState(product.images[0])
+
+  const { addToCart } = useCheckout()
+
+  const handleAddToCart = (data: IProductDetalied) => {
+    const cart = {
+      id: data.id,
+      name: data.name,
+      slug: data.slug,
+      price: data.price,
+      image_url: data.images[0]
+    }
+
+    alert('Adicionado')
+
+    addToCart(cart)
+  }
 
   return (
     <LayoutDefault session={'Produto'}>
@@ -61,8 +78,14 @@ export default function Produto({ breadcrumbs, product }: IProps) {
               </S.DetailsList>
 
               <S.Buttons>
-                <Button types="secundary">Adicionar ao carrinho</Button>
-                <Button types="primary">Compre agora</Button>
+                <Button
+                  types="primary"
+                  onClick={() => handleAddToCart(product)}
+                >
+                  Adicionar ao carrinho
+                </Button>
+
+                <Button types="submit">Compre agora</Button>
               </S.Buttons>
             </S.Details>
           </S.Product>

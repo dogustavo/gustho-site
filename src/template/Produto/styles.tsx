@@ -36,9 +36,9 @@ export const Product = styled.div`
   @media (max-width: ${breakpoints.small}) {
     max-width: 100%;
     grid-template-columns: none;
-    grid-template-rows: 38% 1fr;
+    grid-template-rows: auto 1fr;
     align-items: flex-start;
-    grid-gap: 1rem;
+    grid-gap: 3.5rem;
   }
 `
 
@@ -50,7 +50,7 @@ export const Gallery = styled.div`
   @media (max-width: ${breakpoints.small}) {
     max-width: 100%;
     grid-template-columns: none;
-    grid-template-rows: 1fr 5rem;
+    grid-template-rows: 1fr auto;
   }
 `
 
@@ -181,4 +181,8 @@ export const Buttons = styled.div`
   gap: 1rem;
   width: 100%;
   align-self: flex-end;
+
+  @media (max-width: ${breakpoints.small}) {
+    flex-direction: column;
+  }
 `

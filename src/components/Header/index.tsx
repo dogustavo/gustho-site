@@ -85,6 +85,16 @@ export default function Header() {
             <Link href="/">
               <a>Início</a>
             </Link>
+            {width < 450 && (
+              <>
+                <Link href="/auth">
+                  <a>Login</a>
+                </Link>
+                <Link href="/carrinho">
+                  <a>Carrinho</a>
+                </Link>
+              </>
+            )}
             <Link href="/produtos">
               <a>Produtos</a>
             </Link>

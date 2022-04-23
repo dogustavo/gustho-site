@@ -8,7 +8,9 @@ export interface IProduct {
 }
 
 export interface IProductDetalied {
+  id: string
   name: string
+  slug: string
   price: number
   quantity: number
   images: string[]
