@@ -16,6 +16,14 @@ export interface IProductDetalied {
   description: string
 }
 
+export interface ICart {
+  id: string
+  name: string
+  slug: string
+  price: number
+  image_url: string
+}
+
 export interface IBreadcrumbs {
   route: string
   url: string

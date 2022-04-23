@@ -46,7 +46,7 @@ export default function Header() {
             </HeadingButton>
 
             <S.Wrapper gap={1.5}>
-              <Link href="/">
+              <Link href="/carrinho">
                 <a>
                   <HeadingButton
                     icon="/static/img/cart.svg"

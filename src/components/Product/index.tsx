@@ -4,11 +4,22 @@ import { convertMonetary, priceDivided } from 'utils'
 import * as S from './styles'
 
 import { IProduct } from 'types'
+import { useCheckout } from 'models/checkout/hooks'
 
 export default function Product(product: IProduct) {
+  const { addToCart } = useCheckout()
+
+  const handleAddToCart = (data: IProduct) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { description, ...rest } = data
+    alert('Adicionado')
+
+    addToCart(rest)
+  }
+
   return (
     <S.Product>
-      <S.Cart onClick={() => alert('Adicionado ao carrinho')}>
+      <S.Cart onClick={() => handleAddToCart(product)}>
         <img
           src="/static/img/cart_dark.svg"
           alt="icone para adicionar ao carinho"
