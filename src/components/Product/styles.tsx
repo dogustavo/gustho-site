@@ -14,7 +14,7 @@ export const Cart = styled.button`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.colors.shade};
+  background-color: rgba(255, 255, 255, 0.2);
 
   position: absolute;
   top: 1.5rem;
@@ -22,7 +22,7 @@ export const Cart = styled.button`
 
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.3s ease;
 
   @media (min-width: ${breakpoints.large}) {
     width: 40px;

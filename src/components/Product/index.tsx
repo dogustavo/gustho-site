@@ -5,15 +5,21 @@ import * as S from './styles'
 
 import { IProduct } from 'types'
 import { useCheckout } from 'models/checkout/hooks'
+import { useNotification } from 'models/notification/hooks'
 
 export default function Product(product: IProduct) {
   const { addToCart } = useCheckout()
+  const { sendNotification } = useNotification()
 
   const handleAddToCart = (data: IProduct) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { description, ...rest } = data
-    alert('Adicionado')
 
+    sendNotification({
+      show: true,
+      message: `${rest.name} foi adicionado ao seu carrinho!`,
+      type: 'success'
+    })
     addToCart(rest)
   }
 
