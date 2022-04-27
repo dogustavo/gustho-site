@@ -32,6 +32,26 @@ export const Empty = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+
+  img {
+    margin-bottom: 2.25rem;
+    width: 10rem;
+  }
+
+  h3 {
+    font-weight: 700;
+    font-size: 2.25rem;
+    line-height: 2.25rem;
+
+    text-align: center;
+
+    color: ${({ theme }) => theme.colors.black};
+  }
+
+  a {
+    margin-top: 1rem;
+  }
 
   @media (max-width: ${breakpoints.small}) {
     padding: 4rem 0;

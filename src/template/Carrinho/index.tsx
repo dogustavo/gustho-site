@@ -5,6 +5,7 @@ import { IBreadcrumbs, ICart } from 'types'
 import { Table, Totals } from './components'
 
 import * as S from './styles'
+import Link from 'next/link'
 
 interface IProps {
   breadcrumbs: IBreadcrumbs[]
@@ -28,7 +29,12 @@ export default function Carrinho({ breadcrumbs, cart }: IProps) {
           </S.Wrapper>
         ) : (
           <S.Empty>
-            <h2>Teste</h2>
+            <img src="/static/img/empty.svg" alt="Carrinho vazio" />
+            <h3>O Carrinho está vazio</h3>
+
+            <Link href="/produtos">
+              <a>Ver produtos</a>
+            </Link>
           </S.Empty>
         )}
       </Container>
