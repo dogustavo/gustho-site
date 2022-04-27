@@ -1,5 +1,5 @@
 import { createStore } from 'effector'
-import { setCookie, parseCookies } from 'nookies'
+import { setCookie, parseCookies, destroyCookie } from 'nookies'
 
 import { ICart } from 'types'
 import * as actions from './actions'
@@ -52,7 +52,14 @@ export const removeItem = (id: string) => {
   }
 }
 
+export const clearAllCartItems = () => {
+  destroyCookie(null, 'userCart')
+
+  return initialStore
+}
+
 $cart
   .on(actions.addToCart, (_, data) => addToCart(data))
   .on(actions.removeCartItem, (_, id) => removeItem(id))
+  .on(actions.clearAllCartItems, () => clearAllCartItems())
   .on(actions.getAllCartItems.doneData, (_, cart: ICart[]) => cart)

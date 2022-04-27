@@ -13,7 +13,6 @@ interface IProps {
 }
 
 export default function Carrinho({ breadcrumbs, cart }: IProps) {
-  console.log(cart)
   return (
     <LayoutDefault session="Carrinho">
       <Title title="Carrinho" breadcrumbs={breadcrumbs} />

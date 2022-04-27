@@ -17,3 +17,5 @@ export const getAllCartItems = createEffect(async () => {
 
   return cart
 })
+
+export const clearAllCartItems = createEvent()
