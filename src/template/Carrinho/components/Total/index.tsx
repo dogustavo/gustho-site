@@ -1,5 +1,6 @@
-import { Button } from 'components'
+import { Button, Modal } from 'components'
 import { useCheckout } from 'models/checkout/hooks'
+import { useState } from 'react'
 import { ICart } from 'types'
 import { convertMonetary } from 'utils'
 import * as S from './styles'
@@ -10,6 +11,7 @@ interface IProps {
 
 export default function Totals({ data }: IProps) {
   const { clearAllCartItems } = useCheckout()
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleTotalPrice = () => {
     const total = data?.reduce(
@@ -18,6 +20,12 @@ export default function Totals({ data }: IProps) {
     )
 
     return convertMonetary(total)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    document.body.setAttribute('style', '')
+    clearAllCartItems()
   }
 
   return (
@@ -33,9 +41,17 @@ export default function Totals({ data }: IProps) {
       </S.Price>
 
       <S.Buttons>
-        <Button onClick={() => clearAllCartItems()}>Limpar carrinho</Button>
+        <Button onClick={() => setIsModalOpen(true)}>Limpar carrinho</Button>
         <Button types="submit">Finalizar compra</Button>
       </S.Buttons>
+
+      <Modal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)}>
+        <div>
+          <h2>Tem certeza?</h2>
+          <p>Ao limpar o carrinho todos o itens serão removidos!</p>
+        </div>
+        <Button onClick={handleCloseModal}>Confirmar</Button>
+      </Modal>
     </S.Wrapper>
   )
 }

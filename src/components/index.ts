@@ -7,6 +7,7 @@ import Title from './Title'
 import Footer from './Footer'
 import Button from './Button'
 import Input from './Input'
+import Modal from './Modal'
 import AuthProvider from './Auth'
 
 export {
@@ -19,5 +20,6 @@ export {
   Footer,
   Button,
   Input,
+  Modal,
   AuthProvider
 }

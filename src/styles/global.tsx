@@ -14,8 +14,8 @@ export default createGlobalStyle`
         font-family: 'Josefin Sans', sans-serif;
         font-size: 4.44vw;
         scroll-behavior: smooth;
-        overflow-x: hidden;
         min-height: 100%;
+        overflow-x: hidden;
 
         @media (min-width: 576px) {
             font-size: 3vw;
