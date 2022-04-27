@@ -25,3 +25,15 @@ export const Total = styled.div`
     margin-bottom: 1rem;
   }
 `
+
+export const Empty = styled.div`
+  padding: 7rem 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: ${breakpoints.small}) {
+    padding: 4rem 0;
+  }
+`

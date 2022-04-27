@@ -50,6 +50,18 @@ export const HeadingLink = styled.span`
   color: ${({ theme }) => theme.colors.white};
 `
 
+export const Cart = styled.div`
+  ${baseDispleyStyles}
+  gap: 8px;
+
+  span {
+    background-color: ${({ theme }) => theme.colors.white};
+    border-radius: 8px;
+    color: ${({ theme }) => theme.colors.violet};
+    padding: 0 0.5rem;
+  }
+`
+
 export const NavWrapper = styled(HeadingBarWrapper)`
   padding: 1.2rem 0;
   position: relative;

@@ -1,10 +1,11 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode, useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
 
 import { Container, Menu } from 'components'
 
 import * as S from './styles'
 import { useWindowSize } from 'hooks'
+import { useCheckout } from 'models/checkout/hooks'
 
 interface IButtons {
   children: ReactNode
@@ -29,8 +30,24 @@ const HeadingButton = ({
 
 export default function Header() {
   const width = useWindowSize()
+  const { getAllCartItems, cart } = useCheckout()
 
   const [menuOpen, setMenuOpen] = useState(false)
+  const [cartQty, setCartQty] = useState(0)
+
+  const handleCartItems = useCallback(async () => {
+    if (cart) {
+      setCartQty(cart.length)
+    }
+  }, [cart])
+
+  useEffect(() => {
+    handleCartItems()
+  }, [handleCartItems])
+
+  useEffect(() => {
+    getAllCartItems()
+  }, [getAllCartItems])
 
   return (
     <header>
@@ -52,7 +69,12 @@ export default function Header() {
                     icon="/static/img/cart.svg"
                     alt="Ícone de carrinho"
                   >
-                    <S.HeadingLink>Carrinho</S.HeadingLink>
+                    <S.HeadingLink>
+                      <S.Cart>
+                        <p>Carrinho</p>
+                        <span>{cartQty}</span>
+                      </S.Cart>
+                    </S.HeadingLink>
                   </HeadingButton>
                 </a>
               </Link>

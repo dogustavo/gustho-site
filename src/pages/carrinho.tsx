@@ -1,5 +1,4 @@
 import { useCheckout } from 'models/checkout/hooks'
-import { useCallback, useEffect, useState } from 'react'
 import { Carrinho } from 'template'
 
 const breadcrumbs = [
@@ -18,18 +17,7 @@ const breadcrumbs = [
 ]
 
 export default function Checkout() {
-  const [cartItems, setCartItems] = useState([])
-  const { getAllCartItems } = useCheckout()
+  const { cart } = useCheckout()
 
-  const handleCartItems = useCallback(async () => {
-    const carts = await getAllCartItems()
-
-    setCartItems(carts)
-  }, [getAllCartItems])
-
-  useEffect(() => {
-    handleCartItems()
-  }, [handleCartItems])
-
-  return <Carrinho breadcrumbs={breadcrumbs} cart={cartItems} />
+  return <Carrinho breadcrumbs={breadcrumbs} cart={cart} />
 }

@@ -1,3 +1,4 @@
+import { useCheckout } from 'models/checkout/hooks'
 import { ICart } from 'types'
 import { convertMonetary } from 'utils'
 import * as S from './styles'
@@ -7,6 +8,8 @@ interface IProps {
 }
 
 export default function Table({ data }: IProps) {
+  const { removeCartItem } = useCheckout()
+
   const renderTableRow = (cart: ICart) => {
     return (
       <tr key={cart.id}>
@@ -20,7 +23,7 @@ export default function Table({ data }: IProps) {
         </S.TD>
         <S.TD>{convertMonetary(cart.price)}</S.TD>
         <S.TD>
-          <button onClick={() => alert(`Limpando id ${cart.id}`)}>
+          <button onClick={() => removeCartItem(cart.id)}>
             <img src="/static/img/trash.svg" alt="Icone de lata de lixo" />{' '}
           </button>
         </S.TD>

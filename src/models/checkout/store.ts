@@ -27,9 +27,6 @@ const addToCart = (state: ICart) => {
 
   cart.push(state)
 
-  console.log('cart', cart)
-  console.log('state', state)
-
   setCookie(null, 'userCart', JSON.stringify(cart), {
     maxAge: 60 * 60 * 24 * 7, //7 dias
     path: '/'
@@ -38,6 +35,24 @@ const addToCart = (state: ICart) => {
   return cart
 }
 
+export const removeItem = (id: string) => {
+  const { userCart } = parseCookies()
+
+  if (userCart) {
+    const cart = JSON.parse(userCart)
+
+    const newCart = cart.filter((el: ICart) => el.id !== id)
+
+    setCookie(null, 'userCart', JSON.stringify(newCart), {
+      maxAge: 60 * 60 * 24 * 7, //7 dias
+      path: '/'
+    })
+
+    return newCart
+  }
+}
+
 $cart
   .on(actions.addToCart, (_, data) => addToCart(data))
+  .on(actions.removeCartItem, (_, id) => removeItem(id))
   .on(actions.getAllCartItems.doneData, (_, cart: ICart[]) => cart)

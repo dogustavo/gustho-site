@@ -12,18 +12,25 @@ interface IProps {
 }
 
 export default function Carrinho({ breadcrumbs, cart }: IProps) {
+  console.log(cart)
   return (
     <LayoutDefault session="Carrinho">
       <Title title="Carrinho" breadcrumbs={breadcrumbs} />
       <Container>
-        <S.Wrapper>
-          <Table data={cart} />
-          <S.Total>
-            <h3>Total do carrinho</h3>
+        {cart.length > 0 ? (
+          <S.Wrapper>
+            <Table data={cart} />
+            <S.Total>
+              <h3>Total do carrinho</h3>
 
-            <Totals data={cart} />
-          </S.Total>
-        </S.Wrapper>
+              <Totals data={cart} />
+            </S.Total>
+          </S.Wrapper>
+        ) : (
+          <S.Empty>
+            <h2>Teste</h2>
+          </S.Empty>
+        )}
       </Container>
     </LayoutDefault>
   )
