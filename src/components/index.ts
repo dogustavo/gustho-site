@@ -8,6 +8,7 @@ import Footer from './Footer'
 import Button from './Button'
 import Input from './Input'
 import Modal from './Modal'
+import Notification from './Toast'
 import AuthProvider from './Auth'
 
 export {
@@ -21,5 +22,6 @@ export {
   Button,
   Input,
   Modal,
+  Notification,
   AuthProvider
 }

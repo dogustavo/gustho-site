@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 
-import { AuthProvider } from 'components'
+import { AuthProvider, Notification } from 'components'
 import GlobalStyles from 'styles/global'
 import * as theme from 'styles'
 
@@ -16,6 +16,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         <AuthProvider>
           <Component {...pageProps} />
         </AuthProvider>
+
+        <Notification />
       </ThemeProvider>
     </>
   )

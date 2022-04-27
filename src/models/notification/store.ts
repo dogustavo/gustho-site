@@ -4,9 +4,11 @@ import { INotification } from './types'
 
 import * as action from './actions'
 
+// 'success' | 'danger' | 'info' | 'warning'
+
 const initialStore = {
   show: false,
-  type: '',
+  type: 'success',
   message: ''
 }
 
@@ -15,6 +17,6 @@ export const $notification = createStore<INotification>(initialStore, {
 })
 
 $notification.on(
-  action.sendNotification,
-  (notification: INotification) => notification
+  action.sendNotification.doneData,
+  (_, notification: INotification) => notification
 )
