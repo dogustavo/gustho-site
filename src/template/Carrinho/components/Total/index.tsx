@@ -1,5 +1,6 @@
 import { Button, Modal } from 'components'
 import { useCheckout } from 'models/checkout/hooks'
+import { useNotification } from 'models/notification/hooks'
 import { useState } from 'react'
 import { ICart } from 'types'
 import { convertMonetary } from 'utils'
@@ -11,6 +12,7 @@ interface IProps {
 
 export default function Totals({ data }: IProps) {
   const { clearAllCartItems } = useCheckout()
+  const { sendNotification } = useNotification()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleTotalPrice = () => {
@@ -24,8 +26,15 @@ export default function Totals({ data }: IProps) {
 
   const handleCloseModal = () => {
     setIsModalOpen(false)
-    document.body.setAttribute('style', '')
+
+    sendNotification({
+      show: true,
+      message: `Seu carrinho foi limpo!`,
+      type: 'info'
+    })
+
     clearAllCartItems()
+    document.getElementById('__next')?.setAttribute('style', '')
   }
 
   return (

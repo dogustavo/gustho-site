@@ -10,14 +10,11 @@ interface IModal {
 export default function Modal({ children, isOpen, closeModal }: IModal) {
   useEffect(() => {
     if (isOpen) {
-      document.body.setAttribute(
-        'style',
-        `position: fixed; top: -${window.scrollY}px; left: 0; right: 0`
-      )
+      document
+        .getElementById('__next')
+        ?.setAttribute('style', 'overflow: hidden; height: 100vh;')
     } else {
-      const scrollY = document.body.style.top
-      document.body.setAttribute('style', '')
-      window.scrollTo(0, parseInt(scrollY || '0') * -1)
+      document.getElementById('__next')?.setAttribute('style', '')
     }
   }, [isOpen])
 

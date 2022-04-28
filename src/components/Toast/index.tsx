@@ -11,7 +11,7 @@ export default function Notification() {
   useEffect(() => {
     timer = setTimeout(() => {
       resetNotification()
-    }, 2500)
+    }, 1500)
 
     return () => clearTimeout(timer)
   }, [resetNotification, notification.show])

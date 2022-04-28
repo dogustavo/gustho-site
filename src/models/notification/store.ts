@@ -8,7 +8,7 @@ import * as action from './actions'
 
 const initialStore = {
   show: false,
-  type: 'success',
+  type: '',
   message: ''
 }
 
