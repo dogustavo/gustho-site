@@ -16,7 +16,12 @@ export const $notification = createStore<INotification>(initialStore, {
   name: 'notificationStore'
 })
 
+export const clearAllCartItems = () => {
+  return initialStore
+}
 $notification.on(
   action.sendNotification.doneData,
   (_, notification: INotification) => notification
 )
+
+$notification.reset(action.resetNotification)

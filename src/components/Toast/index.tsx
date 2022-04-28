@@ -1,15 +1,26 @@
 import { useNotification } from 'models/notification/hooks'
+import { useEffect } from 'react'
+
+import * as S from './styles'
+
+let timer: NodeJS.Timeout
 
 export default function Notification() {
-  const { notification } = useNotification()
+  const { notification, resetNotification } = useNotification()
 
-  console.log('executou', notification)
+  useEffect(() => {
+    timer = setTimeout(() => {
+      resetNotification()
+    }, 2500)
+
+    return () => clearTimeout(timer)
+  }, [resetNotification, notification.show])
 
   return (
-    <div>
+    <S.Notification type={notification.type} show={notification.show}>
       <div>
         <p>{notification.message}</p>
       </div>
-    </div>
+    </S.Notification>
   )
 }
