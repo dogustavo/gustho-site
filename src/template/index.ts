@@ -3,6 +3,7 @@ import Produtos from './Produtos'
 import Produto from './Produto'
 import Institucional from './Institucional'
 import Carrinho from './Carrinho'
+import About from './About'
 import { TemplateLogin, TemplateCreate } from './Auth'
 
 export {
@@ -12,5 +13,6 @@ export {
   Institucional,
   TemplateLogin,
   TemplateCreate,
-  Carrinho
+  Carrinho,
+  About
 }

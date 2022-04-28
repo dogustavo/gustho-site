@@ -120,7 +120,7 @@ export default function Header() {
             <Link href="/produtos">
               <a>Produtos</a>
             </Link>
-            <Link href="/">
+            <Link href="/sobre">
               <a>Sobre nós</a>
             </Link>
           </S.Nav>
