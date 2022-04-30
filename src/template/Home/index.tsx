@@ -1,6 +1,7 @@
 import { LayoutDefault } from 'layout'
 
-import { Banner, FeaturedProducts, Offer, SectionBanner } from './components'
+import { Banner, FeaturedProducts, SectionBanner } from './components'
+import { Offer } from 'components'
 
 const bannerData = [
   {

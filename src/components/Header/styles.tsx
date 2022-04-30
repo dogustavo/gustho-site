@@ -17,7 +17,7 @@ const baseDispleyStyles = css`
 
 export const HeadingBar = styled.div`
   background-color: ${({ theme }) => theme.colors.violet};
-  padding: 5px 0;
+  padding: 0.4rem 0;
   font-family: 'Josefin Sans', sans-serif;
   font-style: italic;
   font-weight: 400;
@@ -36,6 +36,12 @@ export const HeadingBarWrapper = styled.div`
 export const Wrapper = styled.div<IWrapper>`
   ${baseDispleyStyles}
   gap: ${({ gap }) => `${gap}rem`};
+  z-index: 4;
+  position: relative;
+
+  img {
+    width: 1.2rem;
+  }
 
   @media (max-width: ${breakpoints.small}) {
     ${({ hideInMobile }) =>
@@ -54,11 +60,23 @@ export const Cart = styled.div`
   ${baseDispleyStyles}
   gap: 8px;
 
-  span {
+  div {
+    ${baseDispleyStyles}
+    justify-content: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+
     background-color: ${({ theme }) => theme.colors.white};
-    border-radius: 8px;
+  }
+
+  div > p {
     color: ${({ theme }) => theme.colors.violet};
-    padding: 0 0.5rem;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 10px;
   }
 `
 
@@ -85,13 +103,13 @@ export const Nav = styled.nav<IMenu>`
     position: absolute;
     height: 105vh;
     z-index: 3;
-    width: 70%;
+    width: 75%;
     background-color: ${({ theme }) => theme.colors.violet};
     flex-direction: column;
     align-items: end;
-    right: -17rem;
+    right: -30rem;
     top: -4.5rem;
-    transition: right 0.5s ease;
+    transition: right 0.6s ease-in;
 
     padding-top: 10rem;
     padding-right: 1rem;
