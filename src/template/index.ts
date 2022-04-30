@@ -4,6 +4,7 @@ import Produto from './Produto'
 import Institucional from './Institucional'
 import Carrinho from './Carrinho'
 import About from './About'
+import MyProducts from './MyProducts'
 import { TemplateLogin, TemplateCreate } from './Auth'
 
 export {
@@ -14,5 +15,6 @@ export {
   TemplateLogin,
   TemplateCreate,
   Carrinho,
-  About
+  About,
+  MyProducts
 }
