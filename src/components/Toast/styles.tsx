@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { breakpoints } from 'styles'
 
 interface INotification {
   type: string
@@ -24,7 +25,7 @@ export const Notification = styled.div<INotification>`
   background-color: ${({ type }) => handleToastType(type)};
   color: ${({ theme }) => theme.colors.white};
   position: fixed;
-  z-index: 2;
+  z-index: 10;
   top: 5rem;
   right: 0;
   transform: translateX(100%);
@@ -36,6 +37,10 @@ export const Notification = styled.div<INotification>`
   transition: transform, opacity;
   transition-duration: 0.5s, 0.7s;
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  @media (max-width: ${breakpoints.small}) {
+    width: 80%;
+  }
 
   ${({ show }) =>
     !!show &&

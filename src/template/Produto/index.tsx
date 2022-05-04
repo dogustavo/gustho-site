@@ -7,6 +7,7 @@ import { IBreadcrumbs, IProductDetalied } from 'types'
 import * as S from './styles'
 import { useState } from 'react'
 import { useCheckout } from 'models/checkout/hooks'
+import { sendNotification } from 'models/notification/actions'
 
 interface IProps {
   breadcrumbs: IBreadcrumbs[]
@@ -27,9 +28,12 @@ export default function Produto({ breadcrumbs, product }: IProps) {
       image_url: data.images[0]
     }
 
-    alert('Adicionado')
-
     addToCart(cart)
+    sendNotification({
+      show: true,
+      message: `${data.name} foi adicionado ao seu carrinho!`,
+      type: 'success'
+    })
   }
 
   return (

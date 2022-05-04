@@ -14,15 +14,18 @@ export const Cart = styled.button`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.4);
 
   position: absolute;
   top: 1.5rem;
   left: 1.5rem;
 
   opacity: 0;
-  visibility: hidden;
   transition: opacity 0.3s ease;
+
+  img {
+    width: 16px;
+  }
 
   @media (min-width: ${breakpoints.large}) {
     width: 40px;
@@ -101,7 +104,6 @@ export const Product = styled.div`
 
     &:hover ${Cart} {
       opacity: 1;
-      visibility: visible;
     }
   }
 `

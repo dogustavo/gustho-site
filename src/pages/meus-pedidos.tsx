@@ -14,6 +14,7 @@ const breadcrumbs = [
     url: '/meus-pedidos'
   }
 ]
+
 const products = [
   {
     id: '1f55079c-b805-11ec-b909-0242ac120015',
