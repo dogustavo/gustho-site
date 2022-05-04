@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
+import NextNprogress from 'nextjs-progressbar'
 
 import { AuthProvider, Notification } from 'components'
 import GlobalStyles from 'styles/global'
@@ -18,6 +19,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         </AuthProvider>
 
         <Notification />
+
+        <NextNprogress
+          color="#FB2E86"
+          startPosition={0.3}
+          stopDelayMs={200}
+          height={3}
+          showOnShallow={true}
+        />
       </ThemeProvider>
     </>
   )
