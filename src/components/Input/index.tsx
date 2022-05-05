@@ -42,7 +42,9 @@ export default function Input({ label, name, required, type, mask }: IProps) {
   }, [handleFocus])
 
   const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.value) setFocus(false)
+    if (!e.target.value) {
+      setFocus(false)
+    }
 
     return e.target.value
   }
@@ -69,7 +71,7 @@ export default function Input({ label, name, required, type, mask }: IProps) {
               type={type}
               placeholder={label}
               value={field.value || ''}
-              onBlur={(e) => handleBlur(e)}
+              onBlur={handleBlur}
               onFocus={() => setFocus(true)}
               onKeyUp={handleKeyUp}
             />

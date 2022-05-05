@@ -13,6 +13,9 @@ interface IButtons {
   alt: string
   hideInMobile?: boolean
 }
+interface ILogin {
+  isOpen: boolean
+}
 
 const HeadingButton = ({
   children,
@@ -28,11 +31,31 @@ const HeadingButton = ({
   )
 }
 
+const LoginButton = ({ isOpen }: ILogin) => (
+  <S.Login isOpen={isOpen}>
+    <p>Bem-Vindo novamente ao Gustho</p>
+
+    <div>
+      <Link href="/auth">
+        <a>
+          <S.HeadingLink>Entrar</S.HeadingLink>
+        </a>
+      </Link>
+      <Link href="/auth/criar">
+        <a>
+          <S.HeadingLink>Cadastrar</S.HeadingLink>
+        </a>
+      </Link>
+    </div>
+  </S.Login>
+)
+
 export default function Header() {
   const width = useWindowSize()
   const { getAllCartItems, cart } = useCheckout()
 
   const [menuOpen, setMenuOpen] = useState(false)
+  const [loginOpen, setLoginOpen] = useState(false)
   const [cartQty, setCartQty] = useState(0)
 
   const handleCartItems = useCallback(async () => {
@@ -81,16 +104,19 @@ export default function Header() {
                   </HeadingButton>
                 </a>
               </Link>
-              <Link href="/auth">
-                <a>
+
+              <S.LoginWrapper>
+                <S.HeaderButton onClick={() => setLoginOpen(!loginOpen)}>
                   <HeadingButton
                     icon="/static/img/user.svg"
                     alt="Ícone de usuário"
                   >
                     <S.HeadingLink>Login</S.HeadingLink>
                   </HeadingButton>
-                </a>
-              </Link>
+                </S.HeaderButton>
+
+                <LoginButton isOpen={loginOpen} />
+              </S.LoginWrapper>
             </S.Wrapper>
           </S.HeadingBarWrapper>
         </Container>

@@ -16,6 +16,7 @@ const baseDispleyStyles = css`
 `
 
 export const HeadingBar = styled.div`
+  min-height: 2rem;
   background-color: ${({ theme }) => theme.colors.violet};
   padding: 0.4rem 0;
   font-family: 'Josefin Sans', sans-serif;
@@ -102,7 +103,7 @@ export const Nav = styled.nav<IMenu>`
   @media (max-width: ${breakpoints.small}) {
     position: absolute;
     height: 105vh;
-    z-index: 3;
+    z-index: 2;
     width: 75%;
     background-color: ${({ theme }) => theme.colors.violet};
     flex-direction: column;
@@ -131,7 +132,7 @@ export const Overlay = styled.div<IMenu>`
   height: 0;
   background-color: rgba(0, 0, 0, 0.6);
   position: fixed;
-  z-index: 2;
+  z-index: 1;
 
   overflow: hidden;
   top: 0;
@@ -146,4 +147,80 @@ export const Overlay = styled.div<IMenu>`
       height: 100vh;
       opacity: 1;
     `}
+`
+
+export const LoginWrapper = styled.div`
+  position: relative;
+`
+
+export const HeaderButton = styled.div`
+  cursor: pointer;
+`
+
+export const Login = styled.div<IMenu>`
+  position: absolute;
+  z-index: 10;
+
+  background-color: ${({ theme }) => theme.colors.white};
+  box-shadow: -4px 6px 20px rgba(0, 0, 0, 0.1);
+  color: ${({ theme }) => theme.colors.black};
+
+  top: -10rem;
+  right: 0;
+  opacity: 0;
+
+  transition: opacity 0.4s ease;
+
+  padding: 1.3rem 1rem;
+
+  ${({ isOpen }) =>
+    !!isOpen &&
+    css`
+      top: 1.6rem;
+      opacity: 1;
+    `}
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  a {
+    padding: 1rem 2rem;
+    background-color: ${({ theme }) => theme.colors.pink};
+    color: ${({ theme }) => theme.colors.white};
+    margin-top: 28px;
+
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1rem;
+
+    transition: background 0.5s ease;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.offBlue};
+    }
+  }
+
+  &::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border: 0.8rem solid transparent;
+    border-top: 0;
+    border-bottom: 1rem solid ${({ theme }) => theme.colors.white};
+    position: absolute;
+    top: -5px;
+    right: 0;
+  }
+
+  @media (max-width: ${breakpoints.small}) {
+    &::after {
+      top: -10px;
+    }
+  }
 `

@@ -15,6 +15,40 @@ export const Wrapper = styled.div`
     grid-template-rows: auto 1fr;
   }
 `
+
+export const Address = styled.div`
+  background-color: ${({ theme }) => theme.colors.shade.light};
+  border-radius: 5px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+`
+
+export const AddressWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 2rem;
+
+  @media (max-width: ${breakpoints.small}) {
+    flex-direction: column;
+  }
+`
+
+export const NoAddress = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  p {
+    margin-bottom: 2rem;
+  }
+`
+
 export const Total = styled.div`
   h3 {
     font-weight: 700;
@@ -22,7 +56,7 @@ export const Total = styled.div`
     line-height: 1.2rem;
 
     color: ${({ theme }) => theme.colors.offBlue};
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 `
 
@@ -57,3 +91,30 @@ export const Empty = styled.div`
     padding: 4rem 0;
   }
 `
+
+export const Form = styled.div`
+  padding: 0 2rem;
+  padding-top: 2rem;
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0;
+  }
+
+  button {
+    background-color: ${({ theme }) => theme.colors.pink};
+    transition: background 0.3s ease;
+    height: 100%;
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.offBlue};
+    }
+
+    img {
+      padding: 0.5rem 0.8rem;
+    }
+  }
+`
+
+export const FormContainer = styled.div``

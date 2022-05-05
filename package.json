@@ -11,6 +11,7 @@
   "dependencies": {
     "@types/axios": "^0.14.0",
     "axios": "^0.26.1",
+    "cep-promise": "^4.1.2",
     "effector": "^22.3.0",
     "effector-react": "^22.0.6",
     "next": "^12.1.4",
