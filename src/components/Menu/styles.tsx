@@ -12,7 +12,7 @@ export const Menu = styled.div<IMenu>`
   justify-content: space-between;
   flex-direction: column;
   position: absolute;
-  z-index: 4;
+  z-index: 3;
   right: 0;
 
   @media (max-width: ${breakpoints.small}) {
