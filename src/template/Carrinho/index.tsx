@@ -2,15 +2,12 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 import { LayoutDefault } from 'layout'
-import { Title, Container, Button, Modal, Input } from 'components'
+import { Title, Container, Button } from 'components'
 import { IBreadcrumbs, ICart } from 'types'
 import { useUser } from 'models/user/hooks'
 
-import { Table, Totals } from './components'
+import { Table, Totals, Form } from './components'
 import * as S from './styles'
-import { useForm, FormProvider } from 'react-hook-form'
-
-import findCep from 'cep-promise'
 
 interface IProps {
   breadcrumbs: IBreadcrumbs[]
@@ -19,17 +16,8 @@ interface IProps {
 
 export default function Carrinho({ breadcrumbs, cart }: IProps) {
   const { user } = useUser()
-  const methods = useForm()
 
   const [isModalOpen, setIsModalOpen] = useState(false)
-
-  const onSubmit = methods.handleSubmit(async (values) => {
-    console.log(values)
-  })
-
-  const getUserLoaction = async () => {
-    console.log('teste')
-  }
 
   return (
     <LayoutDefault session="Carrinho">
@@ -82,39 +70,7 @@ export default function Carrinho({ breadcrumbs, cart }: IProps) {
         )}
       </Container>
 
-      <Modal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)}>
-        <FormProvider {...methods}>
-          <S.Form onSubmit={onSubmit}>
-            <div>
-              <Input
-                name="zipcode"
-                label="CEP"
-                type="text"
-                mask="zipcode"
-                inputMode="numeric"
-                required={true}
-              />
-              <button onClick={getUserLoaction}>
-                <img src="/static/img/search.svg" alt="Icone lupa" />
-              </button>
-            </div>
-            <div>
-              <Input name="street" label="Rua" type="text" required={true} />
-              <Input
-                name="district"
-                label="Bairro"
-                type="text"
-                required={true}
-              />
-            </div>
-            <div>
-              <Input name="number" label="Número" type="text" required={true} />
-              <Input name="city" label="Cidade" type="text" required={true} />
-              <Input name="state" label="Estado" type="text" required={true} />
-            </div>
-          </S.Form>
-        </FormProvider>
-      </Modal>
+      <Form isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </LayoutDefault>
   )
 }
