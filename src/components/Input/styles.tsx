@@ -41,6 +41,13 @@ export const Input = styled.input`
   &:focus {
     border: 1px solid ${({ theme }) => theme.colors.blue};
   }
+
+  &:read-only {
+    background-color: #ddd;
+    opacity: 0.6;
+    color: #000;
+    pointer-events: none;
+  }
 `
 
 export const Content = styled.div<IFocus>`

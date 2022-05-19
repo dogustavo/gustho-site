@@ -10,6 +10,7 @@ import Input from './Input'
 import Modal from './Modal'
 import Notification from './Toast'
 import Offer from './Offer'
+import Loading from './Loading'
 import AuthProvider from './Auth'
 
 export {
@@ -25,5 +26,6 @@ export {
   Modal,
   Notification,
   Offer,
+  Loading,
   AuthProvider
 }

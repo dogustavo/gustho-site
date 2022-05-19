@@ -17,7 +17,14 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   mask?: 'phone' | 'cpf' | 'date' | 'zipcode'
 }
 
-export default function Input({ label, name, required, type, mask }: IProps) {
+export default function Input({
+  label,
+  name,
+  required,
+  type,
+  mask,
+  ...rest
+}: IProps) {
   const {
     control,
     getValues,
@@ -67,6 +74,7 @@ export default function Input({ label, name, required, type, mask }: IProps) {
           return (
             <S.Input
               {...field}
+              {...rest}
               id={name}
               type={type}
               placeholder={label}

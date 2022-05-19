@@ -81,10 +81,6 @@ export const Wrapper = styled.div<IModal>`
     width: 90%;
   }
 
-  div {
-    margin-bottom: 2.2rem;
-  }
-
   h2 {
     font-weight: 700;
     font-size: 2.6rem;
