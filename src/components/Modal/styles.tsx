@@ -67,7 +67,7 @@ export const Wrapper = styled.div<IModal>`
   padding-bottom: 1.2rem;
   z-index: 3;
   position: fixed;
-  max-height: 80%;
+  max-height: 85%;
   min-width: 25%;
   border-radius: 8px;
   top: -120vh;
@@ -76,9 +76,11 @@ export const Wrapper = styled.div<IModal>`
   background-color: #fff;
   transition: top 0.3s ease;
   visibility: hidden;
+  overflow-y: auto;
 
   @media (max-width: ${breakpoints.small}) {
-    width: 90%;
+    width: 95%;
+    padding: 1rem 0.4rem;
   }
 
   h2 {

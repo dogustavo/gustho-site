@@ -3,12 +3,12 @@ import * as S from './styles'
 
 interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode
-  types?: string
+  title?: string
 }
 
-export default function Button({ children, types, ...rest }: IButton) {
+export default function Button({ children, title, ...rest }: IButton) {
   return (
-    <S.Button {...rest} types={types}>
+    <S.Button {...rest} title={title}>
       {children}
     </S.Button>
   )

@@ -9,10 +9,10 @@ type buttonTypeOptions = {
 }
 
 interface IButton {
-  types?: string | undefined
+  title?: string | undefined
 }
 
-const buttonType = (types = 'primary') => {
+const buttonType = (title = 'primary') => {
   const choose: buttonTypeOptions = {
     primary: {
       background: '#FB2E86',
@@ -34,24 +34,24 @@ const buttonType = (types = 'primary') => {
     }
   }
 
-  return choose[types]
+  return choose[title]
 }
 
 export const Button = styled.button<IButton>`
   width: 100%;
-  color: ${({ types }) => buttonType(types).color};
+  color: ${({ title }) => buttonType(title).color};
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.2rem;
   padding: 1.3rem 1rem;
-  background-color: ${({ types }) => buttonType(types).background};
+  background-color: ${({ title }) => buttonType(title).background};
   transition: background 0.5s ease;
   border-radius: 5px;
 
   @media (hover: hover) {
     &:hover {
-      background-color: ${({ types }) => buttonType(types).hover};
-      color: ${({ types }) => buttonType(types).hoverColor};
+      background-color: ${({ title }) => buttonType(title).hover};
+      color: ${({ title }) => buttonType(title).hoverColor};
     }
   }
 `

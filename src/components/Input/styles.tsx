@@ -20,6 +20,7 @@ export const Label = styled.label`
   position: absolute;
   top: 1.2rem;
   left: 1rem;
+  z-index: 2;
   transform: translateY(-50%);
   opacity: 0;
   visibility: hidden;
@@ -35,6 +36,7 @@ export const Input = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.shade.dark};
   box-sizing: border-box;
   border-radius: 2px;
+  height: 4rem;
 
   width: 100%;
 
@@ -70,7 +72,28 @@ export const Content = styled.div<IFocus>`
     `}
 `
 
-export const Error = styled.p`
+export const Search = styled.div`
+  background-color: ${({ theme }) => theme.colors.pink};
+  transition: background 0.3s ease;
+  height: 4rem;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.offBlue};
+  }
+
+  img {
+    padding: 0.5rem 0.8rem;
+  }
+`
+
+export const Error = styled.span`
   ${communTex}
   text-align: right;
   color: ${({ theme }) => theme.colors.red};

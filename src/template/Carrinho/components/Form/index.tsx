@@ -1,23 +1,37 @@
 import { useEffect } from 'react'
-import { Input, Modal, Loading } from 'components'
+import { Input, Modal, Loading, Button } from 'components'
 import { FormProvider, useForm } from 'react-hook-form'
+import { useQuery } from 'react-query'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 import findCep from 'cep-promise'
 
 import * as S from './styles'
-import { useQuery } from 'react-query'
+
+import schema from './validation'
 
 interface IForm {
   isModalOpen: boolean
   setIsModalOpen: (x: boolean) => void
 }
 
+interface IHForm {
+  zipcode: string
+  street: string
+  district: string
+  number: string
+  city: string
+  state: string
+}
+
 const getUserLoaction = async (values: string) => await findCep(values)
 
 export default function Form({ isModalOpen, setIsModalOpen }: IForm) {
-  const methods = useForm()
+  const methods = useForm<IHForm>({
+    resolver: yupResolver(schema)
+  })
 
-  const { data, refetch, isLoading } = useQuery(
+  const { data, refetch, isLoading, isError } = useQuery(
     'getZipCode',
     () => getUserLoaction(methods.watch('zipcode')),
     {
@@ -25,17 +39,11 @@ export default function Form({ isModalOpen, setIsModalOpen }: IForm) {
     }
   )
 
-  const onSubmit = methods.handleSubmit(async (values) => {
-    console.log(values)
-  })
+  const onSubmit = async (values: IHForm) => {
+    console.log('clicou', values)
+  }
 
   useEffect(() => {
-    //     cep: "18211090"
-    // city: "Itapetininga"
-    // neighborhood: "Jardim Casa Grande"
-    // service: "viacep"
-    // state: "SP"
-    // street: "Rua Valdemir Panell
     if (data) {
       console.log(data)
       methods.setValue('district', data?.neighborhood)
@@ -45,28 +53,28 @@ export default function Form({ isModalOpen, setIsModalOpen }: IForm) {
     }
   }, [data, methods])
 
+  console.log()
+
   return (
     <Modal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)}>
       <S.Container>
         <h3>Cadastre seu endereço para continuar</h3>
         <FormProvider {...methods}>
-          <S.Form onSubmit={onSubmit}>
+          <S.Form onSubmit={methods.handleSubmit(onSubmit)}>
             <S.Wrapper>
-              <Input
-                name="zipcode"
-                label="CEP"
-                type="text"
-                mask="zipcode"
-                inputMode="numeric"
-                required={true}
-              />
-              <button onClick={() => refetch()}>
-                {isLoading ? (
-                  <Loading />
-                ) : (
-                  <img src="/static/img/search.svg" alt="Icone lupa" />
-                )}
-              </button>
+              <S.Zipcode>
+                <Input
+                  name="zipcode"
+                  label="CEP"
+                  type="text"
+                  mask="zipcode"
+                  inputMode="numeric"
+                  search={() => refetch()}
+                  required
+                />
+
+                {isError && <p>Nenhum endereço foi encontrado com esse CEP</p>}
+              </S.Zipcode>
             </S.Wrapper>
             <S.Wrapper>
               <Input name="street" label="Rua" type="text" required readOnly />
@@ -89,6 +97,10 @@ export default function Form({ isModalOpen, setIsModalOpen }: IForm) {
                 readOnly
               />
             </S.Wrapper>
+
+            <Button title="submit" type="submit">
+              Enviar
+            </Button>
           </S.Form>
         </FormProvider>
       </S.Container>

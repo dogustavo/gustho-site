@@ -47,3 +47,7 @@ export const Buttons = styled.div`
     flex-direction: column;
   }
 `
+
+export const ModalWrapper = styled.div`
+  margin-bottom: 2rem;
+`

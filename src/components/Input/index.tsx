@@ -14,6 +14,7 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   required?: boolean
   type: string
+  search?: () => void
   mask?: 'phone' | 'cpf' | 'date' | 'zipcode'
 }
 
@@ -23,6 +24,7 @@ export default function Input({
   required,
   type,
   mask,
+  search,
   ...rest
 }: IProps) {
   const {
@@ -86,6 +88,12 @@ export default function Input({
           )
         }}
       />
+
+      {!!search && (
+        <S.Search onClick={search}>
+          <img src="/static/img/search.svg" alt="Icone lupa" />
+        </S.Search>
+      )}
 
       {errors[name] && <S.Error>{errors[name].message}</S.Error>}
     </S.Content>

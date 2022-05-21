@@ -9,6 +9,7 @@
     "lint": "eslint src --max-warnings=0"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.8.10",
     "@types/axios": "^0.14.0",
     "axios": "^0.26.1",
     "cep-promise": "^4.1.2",
@@ -23,7 +24,8 @@
     "react-query": "^3.34.19",
     "react-slick": "^0.28.1",
     "slick-carousel": "^1.8.1",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -33,6 +35,7 @@
     "@types/react": "^17.0.43",
     "@types/react-slick": "^0.23.8",
     "@types/styled-components": "^5.1.15",
+    "@types/yup": "^0.29.14",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
     "babel-plugin-styled-components": "^2.0.7",

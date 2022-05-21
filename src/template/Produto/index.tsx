@@ -83,13 +83,13 @@ export default function Produto({ breadcrumbs, product }: IProps) {
 
               <S.Buttons>
                 <Button
-                  types="primary"
+                  title="primary"
                   onClick={() => handleAddToCart(product)}
                 >
                   Adicionar ao carrinho
                 </Button>
 
-                <Button types="submit">Compre agora</Button>
+                <Button title="submit">Compre agora</Button>
               </S.Buttons>
             </S.Details>
           </S.Product>

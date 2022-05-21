@@ -51,14 +51,14 @@ export default function Totals({ data }: IProps) {
 
       <S.Buttons>
         <Button onClick={() => setIsModalOpen(true)}>Limpar carrinho</Button>
-        <Button types="submit">Finalizar compra</Button>
+        <Button title="submit">Finalizar compra</Button>
       </S.Buttons>
 
       <Modal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)}>
-        <div>
+        <S.ModalWrapper>
           <h2>Tem certeza?</h2>
           <p>Ao limpar o carrinho todos o itens serão removidos!</p>
-        </div>
+        </S.ModalWrapper>
         <Button onClick={handleCloseModal}>Confirmar</Button>
       </Modal>
     </S.Wrapper>
