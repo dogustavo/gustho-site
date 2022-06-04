@@ -17,7 +17,7 @@ import { IClient } from 'types'
 export default function TemplateCreate() {
   const methods = useForm({ resolver: yupResolver(schema) })
 
-  const { mutate, isLoading, isError, error } = useMutation(createNewClient)
+  const { mutate, isLoading, error } = useMutation(createNewClient)
 
   const onSubmit = methods.handleSubmit(async (values) => {
     const payload: IClient = {
@@ -56,7 +56,6 @@ export default function TemplateCreate() {
                       name="mail"
                       label="E-mail"
                       type="email"
-                      autoComplete="off"
                       required={true}
                     />
                   </S.Inputs>
@@ -98,6 +97,7 @@ export default function TemplateCreate() {
                       name="confirm_password"
                       label="Digite sua senha novamente"
                       type="password"
+                      autoComplete="off"
                       required={true}
                     />
                   </S.Inputs>

@@ -1,3 +1,4 @@
+import { Validate } from 'utils'
 import * as yup from 'yup'
 
 export default yup.object().shape({
@@ -6,8 +7,18 @@ export default yup.object().shape({
     .string()
     .email('Email inválido')
     .required('Campo email é obrigatório'),
-  birthdate: yup.string().required('Campo data obrigatório'),
-  cpf: yup.string().required('Campo cpf é obrigatório'),
+  birthdate: yup
+    .string()
+    .test('test-birthdate', 'É preciso ter entre 18 e 100 anos', (value) => {
+      return value ? Validate.isOverAge(value) : false
+    })
+    .required('Campo data obrigatório'),
+  cpf: yup
+    .string()
+    .test('test-invalid-cpf', 'cpf inválido', (value) => {
+      return value ? Validate.isValidCPF(value) : false
+    })
+    .required('Campo cpf é obrigatório'),
   phone: yup.string().required('Campo celular é obrigatório'),
   password: yup
     .string()
