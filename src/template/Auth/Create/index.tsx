@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import { useForm, FormProvider } from 'react-hook-form'
-import { useMutation, useQueryClient } from 'react-query'
+import { useMutation } from 'react-query'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { format, compareAsc } from 'date-fns'
 
 import { LayoutDefault } from 'layout'
 import { Container, Input, Button } from 'components'
@@ -13,11 +12,15 @@ import schema from './validation'
 
 import { convertDate } from 'utils'
 import { IClient } from 'types'
+import { useUser } from 'models/user/hooks'
 
 export default function TemplateCreate() {
   const methods = useForm({ resolver: yupResolver(schema) })
 
-  const { mutate, isLoading, error } = useMutation(createNewClient)
+  const { userRegister } = useUser()
+
+  const { mutate, data, isLoading, isSuccess, error } =
+    useMutation(createNewClient)
 
   const onSubmit = methods.handleSubmit(async (values) => {
     const payload: IClient = {
@@ -30,6 +33,10 @@ export default function TemplateCreate() {
     }
 
     mutate(payload)
+
+    if (isSuccess) {
+      userRegister({ name: data?.name, mail: data?.mail })
+    }
   })
 
   return (

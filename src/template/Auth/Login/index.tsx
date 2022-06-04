@@ -1,30 +1,42 @@
 import Link from 'next/link'
 import { useForm, FormProvider } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 import { LayoutDefault } from 'layout'
 import { Container, Input, Button } from 'components'
 
 import * as S from './styles'
+
 import { useAuth } from 'models'
+import schema from './validation'
+import { useMutation } from 'react-query'
+import { authLogin } from 'service'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 export default function TemplateLogin() {
-  const methods = useForm()
-  const { autorize } = useAuth()
+  const router = useRouter()
+  const methods = useForm({ resolver: yupResolver(schema) })
+  const { autorize, isAuth } = useAuth()
 
-  const onSubmit = methods.handleSubmit(async (values) => {
-    console.log(values)
+  const { mutate, data, isLoading, isSuccess, error } = useMutation(authLogin)
 
-    const response = {
-      token:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
-    }
-
-    autorize({
-      isAuth: !!response.token,
-      token: response.token
-    })
+  const onSubmit = methods.handleSubmit(async ({ mail, password }) => {
+    mutate({ mail, password })
   })
 
+  useEffect(() => {
+    if (isSuccess && !isAuth) {
+      autorize({
+        isAuth: !!data.token,
+        token: data.token
+      })
+
+      router.push('/')
+    }
+  }, [isSuccess])
+
+  //TO DO - TRATAMENTO DE ERRO LOGIN
   return (
     <LayoutDefault session="Login">
       <article>
@@ -38,7 +50,7 @@ export default function TemplateLogin() {
                 </S.FormHeader>
 
                 <S.Inputs>
-                  <Input name="email" label="e-mail" type="email" />
+                  <Input name="mail" label="e-mail" type="email" />
                   <Input name="password" label="Senha" type="password" />
                 </S.Inputs>
 
@@ -46,7 +58,9 @@ export default function TemplateLogin() {
                   <S.Action>Esqueceu a senha?</S.Action>
                 </Link>
 
-                <Button>Entrar</Button>
+                <Button isDisabled={isLoading} isLoading={isLoading}>
+                  Entrar
+                </Button>
 
                 <Link href="/auth/criar">
                   <S.Action>Ainda não possui? Criar conta</S.Action>

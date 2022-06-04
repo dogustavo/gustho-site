@@ -6,6 +6,8 @@ import { Container, Menu } from 'components'
 import * as S from './styles'
 import { useWindowSize } from 'hooks'
 import { useCheckout } from 'models/checkout/hooks'
+import { useAuth } from 'models'
+import Button from 'components/Button'
 
 interface IButtons {
   children: ReactNode
@@ -33,8 +35,7 @@ const HeadingButton = ({
 
 const LoginButton = ({ isOpen }: ILogin) => (
   <S.Login isOpen={isOpen}>
-    <p>Bem-Vindo novamente ao Gustho</p>
-
+    <p>Bem-Vindo ao Gustho</p>
     <div>
       <Link href="/auth">
         <a>
@@ -52,6 +53,7 @@ const LoginButton = ({ isOpen }: ILogin) => (
 
 export default function Header() {
   const width = useWindowSize()
+  const { isAuth, unautorize } = useAuth()
   const { getAllCartItems, cart } = useCheckout()
 
   const [menuOpen, setMenuOpen] = useState(false)
@@ -104,19 +106,29 @@ export default function Header() {
                   </HeadingButton>
                 </a>
               </Link>
+              {!isAuth ? (
+                <S.LoginWrapper>
+                  <S.HeaderButton onClick={() => setLoginOpen(!loginOpen)}>
+                    <HeadingButton
+                      icon="/static/img/user.svg"
+                      alt="Ícone de usuário"
+                    >
+                      <S.HeadingLink>Login</S.HeadingLink>
+                    </HeadingButton>
+                  </S.HeaderButton>
 
-              <S.LoginWrapper>
-                <S.HeaderButton onClick={() => setLoginOpen(!loginOpen)}>
+                  <LoginButton isOpen={loginOpen} />
+                </S.LoginWrapper>
+              ) : (
+                <button type="button" onClick={() => unautorize()}>
                   <HeadingButton
-                    icon="/static/img/user.svg"
-                    alt="Ícone de usuário"
+                    icon="/static/img/log-out.svg"
+                    alt="Ícone de sair"
                   >
-                    <S.HeadingLink>Login</S.HeadingLink>
+                    <S.HeadingLink>Sair</S.HeadingLink>
                   </HeadingButton>
-                </S.HeaderButton>
-
-                <LoginButton isOpen={loginOpen} />
-              </S.LoginWrapper>
+                </button>
+              )}
             </S.Wrapper>
           </S.HeadingBarWrapper>
         </Container>

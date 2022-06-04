@@ -1,11 +1,18 @@
 import axios from 'axios'
 import api from 'service'
 
-import { IClient } from 'types'
+interface ILogin {
+  mail: string
+  password: string
+}
 
-export const createNewClient = async (data: IClient) => {
+interface IAuth {
+  token: string
+}
+
+export const authLogin = async (login: ILogin) => {
   try {
-    const response = await api.post<IClient>('/clients', data)
+    const response = await api.post<IAuth>('/auth/login', login)
 
     return response.data
   } catch (error) {

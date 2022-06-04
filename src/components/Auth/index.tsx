@@ -18,8 +18,6 @@ export default function Provider({ children }: IProvider) {
   useEffect(() => {
     const { userToken } = parseCookies()
 
-    console.log('userToken', userToken)
-
     if (userToken) {
       api.defaults.headers.common.authorization = `Bearer ${userToken}`
 

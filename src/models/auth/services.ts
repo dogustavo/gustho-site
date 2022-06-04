@@ -1,4 +1,5 @@
 import { setCookie, destroyCookie } from 'nookies'
+import Router from 'next/router'
 import { AuthState } from './types'
 
 export const signIn = (state: AuthState) => {
@@ -16,6 +17,8 @@ export const signIn = (state: AuthState) => {
 
 export const signOut = () => {
   destroyCookie(null, 'userToken')
+
+  Router.reload()
 
   return { isAuth: false, token: '' }
 }

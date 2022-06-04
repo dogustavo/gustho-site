@@ -1,6 +1,12 @@
 export interface IUser {
   address: IAddress
+  user: IClient
   addressRegistred: boolean
+}
+
+export interface IClient {
+  name: string
+  mail: string
 }
 
 export interface IAddress {

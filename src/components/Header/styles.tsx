@@ -15,6 +15,15 @@ const baseDispleyStyles = css`
   align-items: center;
 `
 
+const baseTextStyles = css`
+  color: ${({ theme }) => theme.colors.white};
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 10px;
+`
+
 export const HeadingBar = styled.div`
   min-height: 2rem;
   background-color: ${({ theme }) => theme.colors.violet};
@@ -54,7 +63,7 @@ export const Wrapper = styled.div<IWrapper>`
 `
 
 export const HeadingLink = styled.span`
-  color: ${({ theme }) => theme.colors.white};
+  ${baseTextStyles}
 `
 
 export const Cart = styled.div`
@@ -72,12 +81,8 @@ export const Cart = styled.div`
   }
 
   div > p {
+    ${baseTextStyles}
     color: ${({ theme }) => theme.colors.violet};
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 10px;
   }
 `
 
@@ -185,6 +190,7 @@ export const Login = styled.div<IMenu>`
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    width: 16rem;
   }
 
   a {
