@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Input, Modal, Loading, Button } from 'components'
+import { Input, Modal, Button } from 'components'
 import { FormProvider, useForm } from 'react-hook-form'
 import { useQuery } from 'react-query'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -45,7 +45,6 @@ export default function Form({ isModalOpen, setIsModalOpen }: IForm) {
 
   useEffect(() => {
     if (data) {
-      console.log(data)
       methods.setValue('district', data?.neighborhood)
       methods.setValue('street', data?.street)
       methods.setValue('city', data?.city)

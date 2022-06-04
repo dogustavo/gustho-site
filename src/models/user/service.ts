@@ -1,10 +1,10 @@
-import { IAddress, IClient } from './types'
+import { IAddress, IUser } from './types'
 
 export const setUserAddress = (state: IAddress) => {
   console.log(state)
   // return { ...state }
 }
 
-export const setUserRegister = (state: IClient) => {
-  console.log(state)
+export const setUserInfo = (user: IUser) => {
+  return user
 }

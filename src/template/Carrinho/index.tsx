@@ -7,6 +7,7 @@ import { IBreadcrumbs, ICart } from 'types'
 
 import { Table, Totals, Form, Address } from './components'
 import * as S from './styles'
+import { useUser } from 'models'
 
 interface IProps {
   breadcrumbs: IBreadcrumbs[]
@@ -15,6 +16,8 @@ interface IProps {
 
 export default function Carrinho({ breadcrumbs, cart }: IProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const { userInfo } = useUser()
 
   return (
     <LayoutDefault session="Carrinho">

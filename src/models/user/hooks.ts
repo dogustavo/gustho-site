@@ -4,10 +4,12 @@ import { $user } from './store'
 import * as actions from './actions'
 
 export function useUser() {
-  const user = useStore($user)
+  const { address, addressRegistred, userInfo } = useStore($user)
 
   return {
-    user,
+    address,
+    addressRegistred,
+    userInfo,
     ...actions
   }
 }

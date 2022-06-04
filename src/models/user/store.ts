@@ -15,7 +15,7 @@ const initialStore = {
     state: '',
     zipcode: ''
   },
-  user: {
+  userInfo: {
     mail: '',
     name: ''
   }
@@ -30,5 +30,5 @@ $user
     service.setUserAddress({ ...state, ...address })
   )
   .on(action.userRegister, (state, user: IClient) =>
-    service.setUserRegister({ ...state, ...user })
+    service.setUserInfo({ ...state, userInfo: { ...user } })
   )

@@ -1,6 +1,6 @@
 export interface IUser {
   address: IAddress
-  user: IClient
+  userInfo: IClient
   addressRegistred: boolean
 }
 
