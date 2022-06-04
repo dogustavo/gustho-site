@@ -53,8 +53,6 @@ export default function Form({ isModalOpen, setIsModalOpen }: IForm) {
     }
   }, [data, methods])
 
-  console.log()
-
   return (
     <Modal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)}>
       <S.Container>

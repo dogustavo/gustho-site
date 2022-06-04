@@ -30,7 +30,7 @@ const maskCpf = ({ evt, mask }: IMaks) => {
 
 const maskPhone = ({ evt, mask }: IMaks) => {
   if (mask === 'phone') {
-    evt.currentTarget.maxLength = 15
+    evt.currentTarget.maxLength = 14
     let value = evt.currentTarget.value
 
     value = value

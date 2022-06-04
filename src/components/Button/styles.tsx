@@ -48,6 +48,14 @@ export const Button = styled.button<IButton>`
   transition: background 0.5s ease;
   border-radius: 5px;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
   @media (hover: hover) {
     &:hover {
       background-color: ${({ title }) => buttonType(title).hover};

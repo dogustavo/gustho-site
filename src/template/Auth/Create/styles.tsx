@@ -105,3 +105,17 @@ export const Action = styled.a`
     color: ${({ theme }) => theme.colors.pink};
   }
 `
+
+export const Error = styled.div`
+  width: 100%;
+
+  p {
+    text-align: right;
+    color: ${({ theme }) => theme.colors.red};
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
+`
