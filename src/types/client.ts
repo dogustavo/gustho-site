@@ -6,3 +6,12 @@ export interface IClient {
   password: string
   phone: string
 }
+
+export interface IAddress {
+  zipcode: string
+  street: string
+  district: string
+  number: string
+  city: string
+  state: string
+}

@@ -27,7 +27,7 @@ export const $user = createStore<IUser>(initialStore, {
 
 $user
   .on(action.userAddress, (state, address: IAddress) =>
-    service.setUserAddress({ ...state, ...address })
+    service.setUserAddress({ ...state, address: { ...address } })
   )
   .on(action.userRegister, (state, user: IClient) =>
     service.setUserInfo({ ...state, userInfo: { ...user } })

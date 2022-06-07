@@ -76,6 +76,7 @@ export const Search = styled.div`
   background-color: ${({ theme }) => theme.colors.pink};
   transition: background 0.3s ease;
   height: 4rem;
+  width: 4rem;
   cursor: pointer;
   position: absolute;
   top: 0;

@@ -1,37 +1,31 @@
 import { useEffect } from 'react'
 import { Input, Modal, Button } from 'components'
 import { FormProvider, useForm } from 'react-hook-form'
-import { useQuery } from 'react-query'
+import { useMutation, useQuery } from 'react-query'
 import { yupResolver } from '@hookform/resolvers/yup'
-
 import findCep from 'cep-promise'
 
-import * as S from './styles'
+import { updateClient } from 'service'
 
+import * as S from './styles'
+import { IAddress } from 'types'
 import schema from './validation'
+import { useUser } from 'models'
 
 interface IForm {
   isModalOpen: boolean
   setIsModalOpen: (x: boolean) => void
 }
 
-interface IHForm {
-  zipcode: string
-  street: string
-  district: string
-  number: string
-  city: string
-  state: string
-}
-
 const getUserLoaction = async (values: string) => await findCep(values)
 
 export default function Form({ isModalOpen, setIsModalOpen }: IForm) {
-  const methods = useForm<IHForm>({
+  const { userInfo } = useUser()
+  const methods = useForm<IAddress>({
     resolver: yupResolver(schema)
   })
 
-  const { data, refetch, isLoading, isError } = useQuery(
+  const address = useQuery(
     'getZipCode',
     () => getUserLoaction(methods.watch('zipcode')),
     {
@@ -39,18 +33,22 @@ export default function Form({ isModalOpen, setIsModalOpen }: IForm) {
     }
   )
 
-  const onSubmit = async (values: IHForm) => {
+  const user = useMutation(updateClient)
+
+  const onSubmit = async (values: IAddress) => {
     console.log('clicou', values)
+
+    // user.mutate()
   }
 
   useEffect(() => {
-    if (data) {
-      methods.setValue('district', data?.neighborhood)
-      methods.setValue('street', data?.street)
-      methods.setValue('city', data?.city)
-      methods.setValue('state', data?.state)
+    if (address) {
+      methods.setValue('district', address?.data?.neighborhood)
+      methods.setValue('street', address?.data?.street)
+      methods.setValue('city', address?.data?.city)
+      methods.setValue('state', address?.data?.state)
     }
-  }, [data, methods])
+  }, [address, methods])
 
   return (
     <Modal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)}>
@@ -65,12 +63,15 @@ export default function Form({ isModalOpen, setIsModalOpen }: IForm) {
                   label="CEP"
                   type="text"
                   mask="zipcode"
+                  isLoading={address?.isLoading}
                   inputMode="numeric"
-                  search={() => refetch()}
+                  search={() => address?.refetch()}
                   required
                 />
 
-                {isError && <p>Nenhum endereço foi encontrado com esse CEP</p>}
+                {address?.isError && (
+                  <p>Nenhum endereço foi encontrado com esse CEP</p>
+                )}
               </S.Zipcode>
             </S.Wrapper>
             <S.Wrapper>

@@ -1,6 +1,6 @@
-import { IAddress, IUser } from './types'
+import { IUser } from './types'
 
-export const setUserAddress = (state: IAddress) => {
+export const setUserAddress = (state: IUser) => {
   console.log(state)
   // return { ...state }
 }

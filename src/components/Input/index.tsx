@@ -8,12 +8,14 @@ import { useFormContext, Controller } from 'react-hook-form'
 
 import * as S from './styles'
 import { chooseMask } from 'utils'
+import Loading from 'components/Loading'
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string
   name: string
   required?: boolean
   type: string
+  isLoading?: boolean
   search?: () => void
   mask?: 'phone' | 'cpf' | 'date' | 'zipcode'
 }
@@ -25,6 +27,7 @@ export default function Input({
   type,
   mask,
   search,
+  isLoading,
   ...rest
 }: IProps) {
   const {
@@ -91,7 +94,11 @@ export default function Input({
 
       {!!search && (
         <S.Search onClick={search}>
-          <img src="/static/img/search.svg" alt="Icone lupa" />
+          {!isLoading ? (
+            <img src="/static/img/search.svg" alt="Icone lupa" />
+          ) : (
+            <Loading box={24} size={18} border={2} />
+          )}
         </S.Search>
       )}
 

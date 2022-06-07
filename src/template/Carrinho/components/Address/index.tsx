@@ -8,11 +8,11 @@ interface IAddress {
 }
 
 export default function Address({ setIsModalOpen }: IAddress) {
-  const { user } = useUser()
+  const { addressRegistred, address } = useUser()
 
   return (
     <S.Address>
-      {!user.addressRegistred ? (
+      {!addressRegistred ? (
         <S.NoAddress>
           <p>Cadastre seu endereço para continuar</p>
 
@@ -23,9 +23,13 @@ export default function Address({ setIsModalOpen }: IAddress) {
       ) : (
         <>
           <div>
-            <p>Rua Valdemir Panneli das Dores, 137</p>
-            <p>Jardim Casa Grande</p>
-            <p>Itapetininga, SP 18211090</p>
+            <p>
+              {address.street}, {address.number}
+            </p>
+            <p>{address.district}</p>
+            <p>
+              {address.city}, {address.state} {address.zipcode}
+            </p>
           </div>
 
           <S.AddressWrapper>

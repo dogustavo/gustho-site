@@ -44,7 +44,7 @@ const maskPhone = ({ evt, mask }: IMaks) => {
 
 const maskZipcode = ({ evt, mask }: IMaks) => {
   if (mask === 'zipcode') {
-    evt.currentTarget.maxLength = 8
+    evt.currentTarget.maxLength = 9
     let value = evt.currentTarget.value
 
     value = value.replace(/\D/g, '').replace(/^(\d{5})(\d{3})+?$/, '$1-$2')
