@@ -9,7 +9,7 @@ export default function Create() {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { userToken } = parseCookies(context)
 
-  if (!!userToken) {
+  if (userToken) {
     return {
       redirect: {
         destination: '/',
