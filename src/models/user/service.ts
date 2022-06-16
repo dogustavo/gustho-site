@@ -1,8 +1,7 @@
 import { IUser } from './types'
 
 export const setUserAddress = (state: IUser) => {
-  console.log(state)
-  // return { ...state }
+  return { ...state, address: state.address, addressRegistred: true }
 }
 
 export const setUserInfo = (user: IUser) => {

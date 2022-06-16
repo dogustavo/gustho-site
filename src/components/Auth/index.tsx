@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { parseCookies } from 'nookies'
 import { useQuery } from 'react-query'
 
 import api, { fetchClientInfo } from 'service'
 import { useAuth, useUser } from 'models'
+import { parseCookies } from 'nookies'
 
 type IProvider = {
   children: React.ReactNode
@@ -11,42 +11,38 @@ type IProvider = {
 
 export default function Provider({ children }: IProvider) {
   const { token, autorize } = useAuth()
-  const { userRegister } = useUser()
+  const { userRegister, userAddress } = useUser()
 
-  const { data, refetch, isSuccess } = useQuery(
+  const { data: user, isSuccess } = useQuery(
     'fetchClientInfo',
     fetchClientInfo,
     {
-      enabled: false
+      enabled: !!api.defaults.headers.common.authorization
     }
   )
 
   useEffect(() => {
-    api.defaults.headers.common.authorization = `Bearer ${token}`
-  }, [token])
-
-  useEffect(() => {
     const { userToken } = parseCookies()
 
-    if (userToken) {
-      api.defaults.headers.common.authorization = `Bearer ${userToken}`
+    autorize({
+      isAuth: !!userToken,
+      token: userToken
+    })
 
-      autorize({
-        isAuth: !!userToken,
-        token: userToken
-      })
-
-      //request para busca do user
-      refetch()
+    if (token) {
+      api.defaults.headers.common.authorization = `Bearer ${token}`
 
       if (isSuccess) {
         userRegister({
-          mail: data?.mail,
-          name: data?.name
+          mail: user?.mail,
+          name: user?.name,
+          id: user?.userId.toString()
         })
+
+        userAddress(user.address)
       }
     }
-  }, [autorize, isSuccess])
+  }, [isSuccess, token])
 
   return <>{children}</>
 }

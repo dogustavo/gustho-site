@@ -35,7 +35,11 @@ export default function TemplateCreate() {
     mutate(payload)
 
     if (isSuccess) {
-      userRegister({ name: data?.name, mail: data?.mail })
+      userRegister({
+        name: data?.name,
+        mail: data?.mail,
+        id: data?.userId.toString()
+      })
     }
   })
 

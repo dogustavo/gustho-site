@@ -7,10 +7,21 @@ export interface IClient {
   phone: string
 }
 
+export interface IClientFull {
+  birthdate: Date
+  cpf: string
+  mail: string
+  name: string
+  password: string
+  phone: string
+  address: IAddress[]
+  userId: number
+}
+
 export interface IAddress {
   zipcode: string
-  street: string
-  district: string
+  streetname: string
+  streetname2: string
   number: string
   city: string
   state: string

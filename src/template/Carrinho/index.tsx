@@ -17,8 +17,6 @@ interface IProps {
 export default function Carrinho({ breadcrumbs, cart }: IProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const { userInfo } = useUser()
-
   return (
     <LayoutDefault session="Carrinho">
       <Title title="Carrinho" breadcrumbs={breadcrumbs} />

@@ -1,5 +1,5 @@
 export interface IUser {
-  address: IAddress
+  address: IAddress[]
   userInfo: IClient
   addressRegistred: boolean
 }
@@ -7,12 +7,13 @@ export interface IUser {
 export interface IClient {
   name: string
   mail: string
+  id: string
 }
 
 export interface IAddress {
-  street: string
+  streetname: string
+  streetname2: string
   number: string
-  district: string
   city: string
   state: string
   zipcode: string

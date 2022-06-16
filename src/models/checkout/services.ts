@@ -19,7 +19,7 @@ export const addToCart = (state: ICart) => {
   cart.push(state)
 
   setCookie(null, 'userCart', JSON.stringify(cart), {
-    maxAge: 60 * 60 * 24 * 31, //7 dias
+    maxAge: 60 * 60 * 24 * 7, //7 dias
     path: '/'
   })
 
@@ -35,7 +35,7 @@ export const removeItem = (id: string) => {
     const newCart = cart.filter((el: ICart) => el.id !== id)
 
     setCookie(null, 'userCart', JSON.stringify(newCart), {
-      maxAge: 60 * 60 * 24 * 31, //7 dias
+      maxAge: 60 * 60 * 24 * 7, //7 dias
       path: '/'
     })
 

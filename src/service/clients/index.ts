@@ -1,16 +1,15 @@
 import axios from 'axios'
 import api from 'service'
 
-import { IClient, IAddress } from 'types'
+import { IClient, IAddress, IClientFull } from 'types'
 
 interface IClientUpdate {
-  id: string
   payload: IAddress
 }
 
 export const createNewClient = async (data: IClient) => {
   try {
-    const response = await api.post<IClient>('/clients', data)
+    const response = await api.post<IClientFull>('/clients', data)
 
     return response.data
   } catch (error) {
@@ -21,10 +20,11 @@ export const createNewClient = async (data: IClient) => {
   }
 }
 
-export const updateClient = async ({ id, payload }: IClientUpdate) => {
+export const updateClient = async ({ payload }: IClientUpdate) => {
   try {
-    const response = await api.put(`/clients/${id}`, payload)
-
+    const response = await api.put<IClientFull>(`/clients`, {
+      address: [{ ...payload, name: 'default' }]
+    })
     return response.data
   } catch (error) {
     if (axios.isAxiosError(error))
@@ -36,7 +36,7 @@ export const updateClient = async ({ id, payload }: IClientUpdate) => {
 
 export const fetchClientInfo = async () => {
   try {
-    const response = await api.get('/clients')
+    const response = await api.get<IClientFull>('/clients')
 
     return response.data
   } catch (error) {

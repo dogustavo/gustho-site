@@ -10,6 +10,8 @@ interface IAddress {
 export default function Address({ setIsModalOpen }: IAddress) {
   const { addressRegistred, address } = useUser()
 
+  const [principal] = address
+
   return (
     <S.Address>
       {!addressRegistred ? (
@@ -24,17 +26,16 @@ export default function Address({ setIsModalOpen }: IAddress) {
         <>
           <div>
             <p>
-              {address.street}, {address.number}
+              {principal.streetname}, {principal.number}
             </p>
-            <p>{address.district}</p>
+            <p>{principal.streetname2}</p>
             <p>
-              {address.city}, {address.state} {address.zipcode}
+              {principal.city}, {principal.state} {principal.zipcode}
             </p>
           </div>
 
           <S.AddressWrapper>
             <Button title="submit">Alterar</Button>
-            <Button>Excluir</Button>
           </S.AddressWrapper>
         </>
       )}
