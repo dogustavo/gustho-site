@@ -1,4 +1,5 @@
 import { Button, Modal } from 'components'
+import { useUser } from 'models'
 import { useCheckout } from 'models/checkout/hooks'
 import { useNotification } from 'models/notification/hooks'
 import { useState } from 'react'
@@ -14,6 +15,8 @@ export default function Totals({ data }: IProps) {
   const { clearAllCartItems } = useCheckout()
   const { sendNotification } = useNotification()
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const { address } = useUser()
 
   const handleTotalPrice = () => {
     const total = data?.reduce(
@@ -51,8 +54,12 @@ export default function Totals({ data }: IProps) {
 
       <S.Buttons>
         <Button onClick={() => setIsModalOpen(true)}>Limpar carrinho</Button>
-        <Button title="submit">Finalizar compra</Button>
+        <Button title="submit" isDisabled={!address[0]}>
+          Finalizar compra
+        </Button>
       </S.Buttons>
+
+      {!address[0] && <S.Text>Para continuar cadastre seu endereço</S.Text>}
 
       <Modal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)}>
         <S.ModalWrapper>

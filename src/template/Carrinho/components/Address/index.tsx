@@ -34,7 +34,7 @@ export default function Address({ setIsModalOpen }: IAddress) {
             </p>
           </div>
 
-          <S.AddressWrapper>
+          <S.AddressWrapper onClick={() => setIsModalOpen(true)}>
             <Button title="submit">Alterar</Button>
           </S.AddressWrapper>
         </>

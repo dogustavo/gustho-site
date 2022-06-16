@@ -22,7 +22,7 @@ const getUserLoaction = async (values: string) => await findCep(values)
 // @ts-ignore-end
 
 export default function Form({ isModalOpen, setIsModalOpen }: IForm) {
-  const { userAddress, userInfo } = useUser()
+  const { setUserAddress, address: userAddress } = useUser()
   const [findAddress, setFindAddress] = useState(false)
 
   const methods = useForm<IAddress>({
@@ -40,8 +40,12 @@ export default function Form({ isModalOpen, setIsModalOpen }: IForm) {
   const { data: user, mutate, isSuccess } = useMutation(updateClient)
 
   const onSubmit = async (values: IAddress) => {
+    const payload = {
+      ...values,
+      id: userAddress[0].id || null
+    }
     mutate({
-      payload: values
+      payload
     })
   }
 
@@ -56,7 +60,8 @@ export default function Form({ isModalOpen, setIsModalOpen }: IForm) {
 
   useEffect(() => {
     if (isSuccess) {
-      userAddress(user.address)
+      setUserAddress(user.address)
+      setIsModalOpen(false)
     }
   }, [isSuccess])
 

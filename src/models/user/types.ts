@@ -17,4 +17,5 @@ export interface IAddress {
   city: string
   state: string
   zipcode: string
+  id: string | null
 }

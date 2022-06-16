@@ -14,7 +14,8 @@ const initialStore = {
       streetname2: '',
       city: '',
       state: '',
-      zipcode: ''
+      zipcode: '',
+      id: ''
     }
   ],
   userInfo: {
@@ -29,7 +30,7 @@ export const $user = createStore<IUser>(initialStore, {
 })
 
 $user
-  .on(action.userAddress, (state, address: IAddress[]) =>
+  .on(action.setUserAddress, (state, address: IAddress[]) =>
     service.setUserAddress({ ...state, address: [...address] })
   )
   .on(action.userRegister, (state, user: IClient) =>

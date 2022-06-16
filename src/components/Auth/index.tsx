@@ -11,26 +11,30 @@ type IProvider = {
 
 export default function Provider({ children }: IProvider) {
   const { token, autorize } = useAuth()
-  const { userRegister, userAddress } = useUser()
+  const { userRegister, setUserAddress } = useUser()
+
+  const { authorization } = api.defaults.headers.common
+
+  const shouldFetch = authorization && (authorization as string)
 
   const { data: user, isSuccess } = useQuery(
     'fetchClientInfo',
     fetchClientInfo,
     {
-      enabled: !!api.defaults.headers.common.authorization
+      enabled: !!shouldFetch
     }
   )
 
   useEffect(() => {
     const { userToken } = parseCookies()
 
-    autorize({
-      isAuth: !!userToken,
-      token: userToken
-    })
-
     if (token) {
       api.defaults.headers.common.authorization = `Bearer ${token}`
+
+      autorize({
+        isAuth: !!userToken,
+        token: userToken
+      })
 
       if (isSuccess) {
         userRegister({
@@ -39,7 +43,7 @@ export default function Provider({ children }: IProvider) {
           id: user?.userId.toString()
         })
 
-        userAddress(user.address)
+        setUserAddress(user.address)
       }
     }
   }, [isSuccess, token])

@@ -7,7 +7,6 @@ import { IBreadcrumbs, ICart } from 'types'
 
 import { Table, Totals, Form, Address } from './components'
 import * as S from './styles'
-import { useUser } from 'models'
 
 interface IProps {
   breadcrumbs: IBreadcrumbs[]

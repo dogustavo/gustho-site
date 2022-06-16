@@ -53,7 +53,13 @@ export const Button = styled.button<IButton>`
   align-items: center;
 
   &:disabled {
+    background-color: ${({ theme }) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.black};
     cursor: not-allowed;
+  }
+  &:disabled:hover {
+    background-color: ${({ theme }) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.black};
   }
 
   @media (hover: hover) {

@@ -51,3 +51,9 @@ export const Buttons = styled.div`
 export const ModalWrapper = styled.div`
   margin-bottom: 2rem;
 `
+
+export const Text = styled.span`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.8rem;
+`

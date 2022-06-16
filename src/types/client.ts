@@ -25,4 +25,5 @@ export interface IAddress {
   number: string
   city: string
   state: string
+  id: string | null
 }
