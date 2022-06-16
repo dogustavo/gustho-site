@@ -12,12 +12,16 @@ import schema from './validation'
 
 import { convertDate } from 'utils'
 import { IClient } from 'types'
-import { useUser } from 'models/user/hooks'
+import { useRouter } from 'next/router'
+import { useAuth, useUser } from 'models'
+import { useEffect } from 'react'
 
 export default function TemplateCreate() {
+  const router = useRouter()
   const methods = useForm({ resolver: yupResolver(schema) })
 
   const { userRegister } = useUser()
+  const { autorize } = useAuth()
 
   const { mutate, data, isLoading, isSuccess, error } =
     useMutation(createNewClient)
@@ -33,15 +37,24 @@ export default function TemplateCreate() {
     }
 
     mutate(payload)
+  })
 
+  useEffect(() => {
     if (isSuccess) {
+      autorize({
+        isAuth: !!data.token,
+        token: data.token
+      })
+
       userRegister({
         name: data?.name,
         mail: data?.mail,
         id: data?.userId.toString()
       })
+
+      router.push('/')
     }
-  })
+  }, [isSuccess])
 
   return (
     <LayoutDefault session="Login">

@@ -8,13 +8,11 @@ interface IAddress {
 }
 
 export default function Address({ setIsModalOpen }: IAddress) {
-  const { addressRegistred, address } = useUser()
-
-  const [principal] = address
+  const { address } = useUser()
 
   return (
     <S.Address>
-      {!addressRegistred ? (
+      {!address.length ? (
         <S.NoAddress>
           <p>Cadastre seu endereço para continuar</p>
 
@@ -26,11 +24,11 @@ export default function Address({ setIsModalOpen }: IAddress) {
         <>
           <div>
             <p>
-              {principal.streetname}, {principal.number}
+              {address[0].streetname}, {address[0].number}
             </p>
-            <p>{principal.streetname2}</p>
+            <p>{address[0].streetname2}</p>
             <p>
-              {principal.city}, {principal.state} {principal.zipcode}
+              {address[0].city}, {address[0].state} {address[0].zipcode}
             </p>
           </div>
 

@@ -42,7 +42,7 @@ export default function Form({ isModalOpen, setIsModalOpen }: IForm) {
   const onSubmit = async (values: IAddress) => {
     const payload = {
       ...values,
-      id: userAddress[0].id || null
+      id: userAddress[0]?.id || undefined
     }
     mutate({
       payload

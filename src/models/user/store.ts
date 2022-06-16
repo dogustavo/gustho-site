@@ -6,18 +6,7 @@ import * as service from './service'
 import * as action from './actions'
 
 const initialStore = {
-  addressRegistred: false,
-  address: [
-    {
-      number: '',
-      streetname: '',
-      streetname2: '',
-      city: '',
-      state: '',
-      zipcode: '',
-      id: ''
-    }
-  ],
+  address: [],
   userInfo: {
     mail: '',
     name: '',

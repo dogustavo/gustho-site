@@ -18,7 +18,7 @@ export const signIn = (state: AuthState) => {
 export const signOut = () => {
   destroyCookie(null, 'userToken')
 
-  Router.reload()
+  Router.push('/')
 
   return { isAuth: false, token: '' }
 }

@@ -16,6 +16,7 @@ export interface IClientFull {
   phone: string
   address: IAddress[]
   userId: number
+  token: string
 }
 
 export interface IAddress {
@@ -25,5 +26,5 @@ export interface IAddress {
   number: string
   city: string
   state: string
-  id: string | null
+  id: string | undefined
 }

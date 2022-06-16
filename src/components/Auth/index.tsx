@@ -10,7 +10,9 @@ type IProvider = {
 }
 
 export default function Provider({ children }: IProvider) {
-  const { token, autorize } = useAuth()
+  const { autorize } = useAuth()
+  const { userToken } = parseCookies()
+
   const { userRegister, setUserAddress } = useUser()
 
   const { authorization } = api.defaults.headers.common
@@ -26,10 +28,8 @@ export default function Provider({ children }: IProvider) {
   )
 
   useEffect(() => {
-    const { userToken } = parseCookies()
-
-    if (token) {
-      api.defaults.headers.common.authorization = `Bearer ${token}`
+    if (userToken) {
+      api.defaults.headers.common.authorization = `Bearer ${userToken}`
 
       autorize({
         isAuth: !!userToken,
@@ -46,7 +46,7 @@ export default function Provider({ children }: IProvider) {
         setUserAddress(user.address)
       }
     }
-  }, [isSuccess, token])
+  }, [isSuccess, userToken])
 
   return <>{children}</>
 }

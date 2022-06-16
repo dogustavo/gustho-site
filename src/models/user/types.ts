@@ -1,7 +1,6 @@
 export interface IUser {
   address: IAddress[]
   userInfo: IClient
-  addressRegistred: boolean
 }
 
 export interface IClient {
@@ -17,5 +16,5 @@ export interface IAddress {
   city: string
   state: string
   zipcode: string
-  id: string | null
+  id: string | undefined
 }
