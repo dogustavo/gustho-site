@@ -1,2 +1,0 @@
-name: Vercel Deploy Action
-uses: ngduc/vercel-deploy-action@v19.0.12
