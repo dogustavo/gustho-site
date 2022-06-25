@@ -4,8 +4,16 @@ import { IProduct, IFilter } from 'types'
 import { Title } from 'components'
 import { List } from './components'
 
+interface IProps {
+  data: IProduct[]
+  total: number
+  pages: number
+  page: number
+  limit: number
+}
+
 interface IProducts {
-  products: IProduct[] | undefined
+  products: IProps | undefined
   setFilter: (props: IFilter) => void
   filter: IFilter
   isLoading: boolean

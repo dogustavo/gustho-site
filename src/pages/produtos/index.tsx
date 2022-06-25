@@ -1,20 +1,14 @@
 import { Produtos } from 'template'
 import { GetServerSideProps } from 'next'
-// import { useQuery } from 'react-query'
 import { getProducts } from 'service'
-import { IPrductsPaginate } from 'types'
 import { useState } from 'react'
 
 import { dehydrate, QueryClient, useQuery } from 'react-query'
 
-interface IProducts {
-  product: IPrductsPaginate
-}
-
 export default function Products() {
   const [filter, setFilter] = useState({
     page: 1,
-    limit: 15,
+    limit: 1,
     search: ''
   })
 
@@ -25,7 +19,7 @@ export default function Products() {
 
   return (
     <Produtos
-      products={products?.data}
+      products={products}
       setFilter={setFilter}
       filter={filter}
       isLoading={isLoading}
@@ -36,7 +30,7 @@ export default function Products() {
 export const getServerSideProps: GetServerSideProps = async () => {
   const filter = {
     page: 1,
-    limit: 15,
+    limit: 1,
     search: ''
   }
 
