@@ -3,12 +3,12 @@ import { useUser } from 'models'
 import { useCheckout } from 'models/checkout/hooks'
 import { useNotification } from 'models/notification/hooks'
 import { useState } from 'react'
-import { ICart } from 'types'
+import { IProduct } from 'types'
 import { convertMonetary } from 'utils'
 import * as S from './styles'
 
 interface IProps {
-  data: ICart[]
+  data: IProduct[]
 }
 
 export default function Totals({ data }: IProps) {
@@ -19,10 +19,11 @@ export default function Totals({ data }: IProps) {
   const { address } = useUser()
 
   const handleTotalPrice = () => {
-    const total = data?.reduce(
-      (acc: number, current: ICart) => acc + current.price,
-      0
-    )
+    // const total = data?.reduce(
+    //   (acc: number, current: IProduct) => acc + current.price,
+    //   0
+    // )
+    const total = data?.reduce((acc: number, current: IProduct) => acc + 12, 0)
 
     return convertMonetary(total)
   }

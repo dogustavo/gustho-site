@@ -1,10 +1,9 @@
 export interface IProduct {
-  id: string
+  id: number
   name: string
-  slug: string
-  description: string
-  price: number
-  image_url: string
+  shortDescription: string
+  avaliable: number
+  imgUrl: string
 }
 
 export interface IProductDetalied {
@@ -29,4 +28,12 @@ export interface ICart {
 export interface IBreadcrumbs {
   route: string
   url: string
+}
+
+export interface IPrductsPaginate {
+  data: IProduct[]
+  limit: number
+  page: number
+  pages: number
+  total: number
 }

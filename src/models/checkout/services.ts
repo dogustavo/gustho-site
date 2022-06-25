@@ -1,10 +1,12 @@
 import { setCookie, parseCookies, destroyCookie } from 'nookies'
-import { ICart } from 'types'
+import { IProduct } from 'types'
 
-export const addToCart = (state: ICart) => {
+export const addToCart = (state: IProduct) => {
   const { userCart } = parseCookies()
 
-  let cart: ICart[] = []
+  console.log('teste', state)
+
+  let cart: IProduct[] = []
 
   if (userCart) {
     cart = JSON.parse(userCart)
@@ -32,7 +34,7 @@ export const removeItem = (id: string) => {
   if (userCart) {
     const cart = JSON.parse(userCart)
 
-    const newCart = cart.filter((el: ICart) => el.id !== id)
+    const newCart = cart.filter((el: IProduct) => el.id.toString() !== id)
 
     setCookie(null, 'userCart', JSON.stringify(newCart), {
       maxAge: 60 * 60 * 24 * 7, //7 dias

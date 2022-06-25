@@ -136,7 +136,11 @@ export default function Header() {
 
       <Container>
         <S.NavWrapper>
-          <img src="/static/img/logo.svg" alt="Logo da loja Gustho" />
+          <Link href="/">
+            <a>
+              <img src="/static/img/logo.svg" alt="Logo da loja Gustho" />
+            </a>
+          </Link>
 
           {width < 450 && (
             <Menu isOpen={menuOpen} action={() => setMenuOpen(!menuOpen)} />

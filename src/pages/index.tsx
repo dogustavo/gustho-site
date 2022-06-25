@@ -1,5 +1,36 @@
-import { Home } from 'template'
+import { useState } from 'react'
+import { GetServerSideProps } from 'next'
+import { useQuery } from 'react-query'
 
-export default function App() {
-  return <Home />
+import { Home } from 'template'
+import { getProducts } from 'service'
+import { IPrductsPaginate } from 'types'
+
+interface IProducts {
+  product: IPrductsPaginate
+}
+
+export default function App({ product }: IProducts) {
+  const [filter, setFilter] = useState({
+    page: product.page,
+    limit: product.limit
+  })
+
+  const { data: products, isSuccess } = useQuery(
+    ['getAllProducts', filter],
+    () => getProducts(filter),
+    { initialData: product }
+  )
+
+  return <Home products={products?.data} />
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const product = await getProducts({ page: 1, limit: 8, search: undefined })
+
+  return {
+    props: {
+      product
+    }
+  }
 }
