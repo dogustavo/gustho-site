@@ -3,13 +3,14 @@ import { breakpoints } from 'styles'
 
 export const Wrapper = styled.div`
   padding: 7rem 0;
+  position: relative;
+
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 2rem;
   grid-row-gap: 4rem;
   justify-content: center;
   align-items: center;
-  justify-items: center;
 
   @media (max-width: ${breakpoints.medium}) {
     grid-template-columns: repeat(3, 1fr);
@@ -23,8 +24,9 @@ export const Wrapper = styled.div`
 export const Filter = styled.div`
   margin-top: 2rem;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 1rem;
   width: 100%;
 
   p {
@@ -33,30 +35,39 @@ export const Filter = styled.div`
     line-height: 1.3rem;
   }
 
-  form {
-    width: 25rem;
-    display: flex;
-  }
-
-  button {
-    background-color: ${({ theme }) => theme.colors.pink};
-    transition: background 0.3s ease;
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.offBlue};
-    }
-
-    img {
-      padding: 0.5rem 0.8rem;
-    }
-  }
-
   @media (max-width: ${breakpoints.small}) {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+  }
+`
 
+export const Form = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1rem;
+
+  form {
+    width: 25rem;
+  }
+
+  span {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  @media (max-width: ${breakpoints.small}) {
     form {
       width: 100%;
     }
   }
+`
+
+export const Loading = styled.div`
+  height: 20rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `

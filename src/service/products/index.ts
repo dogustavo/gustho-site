@@ -12,8 +12,21 @@ interface IFilter {
 export const getProducts = async (filter: IFilter) => {
   try {
     const response = await api.get<IPrductsPaginate>('/products/paginate', {
-      params: filter
+      params: filter || undefined
     })
+
+    return response.data
+  } catch (error) {
+    if (axios.isAxiosError(error))
+      throw new Error('Ouve um problema com a chamada ')
+
+    throw new Error('An unexpected error occurred')
+  }
+}
+
+export const getProductDetalied = async (id: string) => {
+  try {
+    const response = await api.get<IPrductsPaginate>(`/products/${id}`)
 
     return response.data
   } catch (error) {

@@ -12,11 +12,11 @@ interface IProducts {
 
 export default function App({ product }: IProducts) {
   const [filter, setFilter] = useState({
-    page: product.page,
-    limit: product.limit
+    page: product.page | 1,
+    limit: product.limit | 15
   })
 
-  const { data: products, isSuccess } = useQuery(
+  const { data: products } = useQuery(
     ['getAllProducts', filter],
     () => getProducts(filter),
     { initialData: product }

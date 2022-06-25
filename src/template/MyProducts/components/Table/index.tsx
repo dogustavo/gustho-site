@@ -1,24 +1,28 @@
-import { ICart } from 'types'
+import { IProduct } from 'types'
 import { convertMonetary } from 'utils'
 import * as S from './styles'
 
 interface IProps {
-  data: ICart[]
+  data: IProduct[]
 }
 
+//TODO - Preço do produto está atualmente mockado
 export default function Table({ data }: IProps) {
-  const renderTableRow = (cart: ICart) => {
+  const renderTableRow = (cart: IProduct) => {
     return (
       <tr key={cart.id}>
         <S.TD>
           <S.Product>
             <S.Image>
-              <img src={cart.image_url} alt={`Produto ${cart.name}`} />
+              <img
+                src={`https://gustho.nishiduka.dev/${cart.imgUrl}`}
+                alt={`Produto ${cart.name}`}
+              />
             </S.Image>
             <p>{cart.name}</p>
           </S.Product>
         </S.TD>
-        <S.TD>{convertMonetary(cart.price)}</S.TD>
+        <S.TD>{convertMonetary(18)}</S.TD>
         <S.TD>FINALIZADO</S.TD>
       </tr>
     )

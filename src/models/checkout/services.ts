@@ -4,8 +4,6 @@ import { IProduct } from 'types'
 export const addToCart = (state: IProduct) => {
   const { userCart } = parseCookies()
 
-  console.log('teste', state)
-
   let cart: IProduct[] = []
 
   if (userCart) {
