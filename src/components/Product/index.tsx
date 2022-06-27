@@ -14,18 +14,19 @@ export default function Product(product: IProduct) {
   const handleAddToCart = (data: IProduct) => {
     const { id, name, shortDescription, avaliable, imgUrl } = data
 
-    sendNotification({
-      show: true,
-      message: `${data.name} foi adicionado ao seu carrinho!`,
-      type: 'success'
-    })
-
     addToCart({
       id,
       name,
       shortDescription,
       avaliable,
-      imgUrl
+      imgUrl,
+      quantity: 1
+    })
+
+    sendNotification({
+      show: true,
+      message: `${data.name} foi adicionado ao seu carrinho!`,
+      type: 'success'
     })
   }
 

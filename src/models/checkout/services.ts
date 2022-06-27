@@ -4,26 +4,26 @@ import { IProduct } from 'types'
 export const addToCart = (state: IProduct) => {
   const { userCart } = parseCookies()
 
-  let cart: IProduct[] = []
+  let items: IProduct[] = userCart ? JSON.parse(userCart) : []
 
-  if (userCart) {
-    cart = JSON.parse(userCart)
-
-    const hasOnCart = cart.find((el) => el.id === state.id)
-
-    if (hasOnCart) {
-      return
+  const cart = items.reduce((acc, el) => {
+    if (el.id === state.id) {
+      el.quantity += 1
+      items.splice(items.indexOf(el), 1)
+      return el
     }
-  }
 
-  cart.push(state)
+    return acc
+  }, state)
 
-  setCookie(null, 'userCart', JSON.stringify(cart), {
+  items.push(cart)
+
+  setCookie(null, 'userCart', JSON.stringify(items), {
     maxAge: 60 * 60 * 24 * 7, //7 dias
     path: '/'
   })
 
-  return cart
+  return items
 }
 
 export const removeItem = (id: string) => {

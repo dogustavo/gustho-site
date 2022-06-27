@@ -4,6 +4,7 @@ export interface IProduct {
   shortDescription: string
   avaliable: number
   imgUrl: string
+  quantity: number
 }
 
 export interface IProductDetalied {

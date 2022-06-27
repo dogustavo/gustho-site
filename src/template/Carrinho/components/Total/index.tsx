@@ -20,7 +20,7 @@ export default function Totals({ data }: IProps) {
 
   const handleTotalPrice = () => {
     // const total = data?.reduce(
-    //   (acc: number, current: IProduct) => acc + current.price,
+    //   (acc: number, current: IProduct) => acc + 23,
     //   0
     // )
     const total = data?.reduce((acc: number, current: IProduct) => acc + 12, 0)
