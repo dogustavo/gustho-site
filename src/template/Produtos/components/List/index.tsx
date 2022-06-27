@@ -40,13 +40,7 @@ export default function List({
     ))
   }
 
-  console.log(products)
-
   const handlePagination = (type: string) => {
-    window.scrollTo({
-      top: 250
-    })
-
     const pagination = {
       first: 1,
       prev: filter.page - 1,

@@ -5,12 +5,14 @@ import { useState } from 'react'
 
 import { dehydrate, QueryClient, useQuery } from 'react-query'
 
+const filterProps = {
+  page: 1,
+  limit: 15,
+  search: ''
+}
+
 export default function Products() {
-  const [filter, setFilter] = useState({
-    page: 1,
-    limit: 1,
-    search: ''
-  })
+  const [filter, setFilter] = useState(filterProps)
 
   const { data: products, isLoading } = useQuery(
     ['getAllProducts', filter],
@@ -28,16 +30,10 @@ export default function Products() {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const filter = {
-    page: 1,
-    limit: 1,
-    search: ''
-  }
-
   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery(['getAllProducts', filter], () =>
-    getProducts(filter)
+  await queryClient.prefetchQuery(['getAllProducts', filterProps], () =>
+    getProducts(filterProps)
   )
 
   return {
