@@ -25,7 +25,7 @@ export default function Table({ data }: IProps) {
           </S.Product>
         </S.TD>
         <S.TD>{cart.quantity}</S.TD>
-        <S.TD>{convertMonetary(23 * cart.quantity)}</S.TD>
+        <S.TD>{convertMonetary(cart.price * cart.quantity)}</S.TD>
         <S.TD>
           <button onClick={() => removeCartItem(cart.id.toString())}>
             <img src="/static/img/trash.svg" alt="Icone de lata de lixo" />{' '}

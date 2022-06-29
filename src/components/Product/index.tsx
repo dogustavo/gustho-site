@@ -12,12 +12,13 @@ export default function Product(product: IProduct) {
   const { sendNotification } = useNotification()
 
   const handleAddToCart = (data: IProduct) => {
-    const { id, name, shortDescription, avaliable, imgUrl } = data
+    const { id, name, shortDescription, avaliable, imgUrl, price } = data
 
     addToCart({
       id,
       name,
       shortDescription,
+      price,
       avaliable,
       imgUrl,
       quantity: 1
@@ -50,7 +51,7 @@ export default function Product(product: IProduct) {
           <S.Wrapper>
             <S.Name>{product.name}</S.Name>
             <div>
-              <S.Price>{convertMonetary(12)}</S.Price>
+              <S.Price>{convertMonetary(product.price)}</S.Price>
             </div>
 
             <S.Description>{product.shortDescription}</S.Description>

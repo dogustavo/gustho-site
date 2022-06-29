@@ -6,7 +6,6 @@ interface IProps {
   data: IProduct[]
 }
 
-//TODO - Preço do produto está atualmente mockado
 export default function Table({ data }: IProps) {
   const renderTableRow = (cart: IProduct) => {
     return (
@@ -22,7 +21,7 @@ export default function Table({ data }: IProps) {
             <p>{cart.name}</p>
           </S.Product>
         </S.TD>
-        <S.TD>{convertMonetary(18)}</S.TD>
+        <S.TD>{convertMonetary(cart.price)}</S.TD>
         <S.TD>FINALIZADO</S.TD>
       </tr>
     )
