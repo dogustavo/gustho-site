@@ -61,7 +61,13 @@ export const Name = styled.p`
   font-weight: 700;
   font-size: 1.5rem;
   line-height: 1.2rem;
+  text-align: center;
   color: ${({ theme }) => theme.colors.pink};
+
+  width: 95%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `
 export const Price = styled.p`
   font-weight: 400;

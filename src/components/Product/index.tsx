@@ -54,7 +54,9 @@ export default function Product(product: IProduct) {
               <S.Price>{convertMonetary(product.price)}</S.Price>
             </div>
 
-            <S.Description>{product.shortDescription}</S.Description>
+            <S.Description>
+              {product.shortDescription.split(';')[0]}
+            </S.Description>
           </S.Wrapper>
         </S.Card>
       </Link>

@@ -44,7 +44,7 @@ export const removeItem = (id: string) => {
 }
 
 export const clearAllCartItems = () => {
-  destroyCookie(null, 'userCart')
+  destroyCookie({}, 'userCart')
 
   return []
 }

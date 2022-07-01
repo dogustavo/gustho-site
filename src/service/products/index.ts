@@ -1,7 +1,7 @@
 import axios from 'axios'
 import api from 'service'
 
-import { IPrductsPaginate } from 'types'
+import { IPrductsPaginate, IProduct } from 'types'
 
 interface IFilter {
   page?: number
@@ -34,7 +34,7 @@ export const getProducts = async (filter: IFilter) => {
 
 export const getProductDetalied = async (id: string) => {
   try {
-    const response = await api.get<IPrductsPaginate>(`/products/${id}`)
+    const response = await api.get(`/products/${id}`)
 
     return response.data
   } catch (error) {

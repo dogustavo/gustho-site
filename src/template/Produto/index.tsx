@@ -9,31 +9,49 @@ import { useState } from 'react'
 import { useCheckout } from 'models/checkout/hooks'
 import { sendNotification } from 'models/notification/actions'
 
+import { useRouter } from 'next/router'
+
 interface IProps {
   breadcrumbs: IBreadcrumbs[]
   product: IProductDetalied
 }
 
+interface ISumbit {
+  data: IProductDetalied
+  type: 'sumbit' | 'cart'
+}
+
 export default function Produto({ breadcrumbs, product }: IProps) {
-  const [mainImage, setMainImage] = useState(product.images[0])
+  const router = useRouter()
+
+  const [mainImage, setMainImage] = useState(product?.media[0]?.path)
 
   const { addToCart } = useCheckout()
 
-  const handleAddToCart = (data: IProductDetalied) => {
-    const cart = {
-      id: data.id,
-      name: data.name,
-      slug: data.slug,
-      price: data.price,
-      image_url: data.images[0]
+  const handleAddToCart = ({ data, type }: ISumbit) => {
+    const { id, name, shortDescription, media, price, avaliable } = data
+
+    addToCart({
+      id: parseInt(id),
+      name,
+      shortDescription,
+      price,
+      avaliable,
+      imgUrl: media[0].path,
+      quantity: 1
+    })
+
+    if (type === 'cart') {
+      sendNotification({
+        show: true,
+        message: `${data.name} foi adicionado ao seu carrinho!`,
+        type: 'success'
+      })
+
+      return
     }
 
-    addToCart(cart)
-    sendNotification({
-      show: true,
-      message: `${data.name} foi adicionado ao seu carrinho!`,
-      type: 'success'
-    })
+    router.push('/carrinho')
   }
 
   return (
@@ -44,28 +62,31 @@ export default function Produto({ breadcrumbs, product }: IProps) {
           <S.Product>
             <S.Gallery>
               <S.Aside>
-                {product.images.map((image, id) => (
+                {product.media.map((image) => (
                   <S.Image
-                    key={id}
-                    onClick={() => setMainImage(image)}
-                    selected={mainImage === image}
+                    key={image.id}
+                    onClick={() => setMainImage(image.path)}
+                    selected={mainImage === image.path}
                   >
                     <img
-                      src={image}
-                      alt={`imagem número ${id + 1} da galeria`}
+                      src={`https://gustho.nishiduka.dev/${image.path}`}
+                      alt={`imagem número ${image.id + 1} da galeria`}
                     />
                   </S.Image>
                 ))}
               </S.Aside>
 
               <S.MainImage>
-                <img src={mainImage} alt="Imagem principal da galeria" />
+                <img
+                  src={`https://gustho.nishiduka.dev/${mainImage}`}
+                  alt="Imagem principal da galeria"
+                />
               </S.MainImage>
             </S.Gallery>
 
             <S.Details>
               <S.Wrapper>
-                <span>{product.quantity} produtos restante</span>
+                <span>{product.avaliable} produtos restante</span>
                 <h3>{product.name}</h3>
                 <p>{convertMonetary(product.price)}</p>
               </S.Wrapper>
@@ -74,22 +95,31 @@ export default function Produto({ breadcrumbs, product }: IProps) {
                 <p>
                   <strong>O que você precisa saber sobre este produto</strong>
                 </p>
-                <ul
-                  dangerouslySetInnerHTML={{
-                    __html: product.short_description
-                  }}
-                />
+                <ul>
+                  {product.shortDescription.split(';').map((el) => (
+                    <li key={el}>{el}</li>
+                  ))}
+                </ul>
               </S.DetailsList>
 
               <S.Buttons>
                 <Button
                   title="primary"
-                  onClick={() => handleAddToCart(product)}
+                  onClick={() =>
+                    handleAddToCart({ data: product, type: 'cart' })
+                  }
                 >
                   Adicionar ao carrinho
                 </Button>
 
-                <Button title="submit">Compre agora</Button>
+                <Button
+                  title="submit"
+                  onClick={() =>
+                    handleAddToCart({ data: product, type: 'sumbit' })
+                  }
+                >
+                  Compre agora
+                </Button>
               </S.Buttons>
             </S.Details>
           </S.Product>

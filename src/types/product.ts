@@ -10,12 +10,13 @@ export interface IProduct {
 
 export interface IProductDetalied {
   id: string
+  metric: string
   name: string
-  slug: string
   price: number
   quantity: number
-  images: string[]
-  short_description: string
+  media: IMedia[]
+  avaliable: number
+  shortDescription: string
   description: string
 }
 
@@ -36,4 +37,15 @@ export interface IFilter {
   page: number
   limit: number
   search: string
+}
+
+interface IMedia {
+  createdAt: string
+  extension: string
+  filename: string
+  id: number
+  order: string
+  path: string
+  productId: number
+  updatedAt: string
 }
