@@ -12,30 +12,28 @@ import schema from './validation'
 import { useMutation } from 'react-query'
 import { authLogin } from 'service'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 
 export default function TemplateLogin() {
   const router = useRouter()
   const methods = useForm({ resolver: yupResolver(schema) })
   const { autorize, isAuth } = useAuth()
 
-  const { mutate, data, isLoading, isSuccess } = useMutation(authLogin)
+  const { mutate, isLoading } = useMutation(authLogin, {
+    onSuccess: (data) => {
+      if (!isAuth) {
+        autorize({
+          isAuth: !!data.token,
+          token: data.token
+        })
+
+        router.push('/')
+      }
+    }
+  })
 
   const onSubmit = methods.handleSubmit(async ({ mail, password }) => {
     mutate({ mail, password })
   })
-
-  useEffect(() => {
-    if (isSuccess && !isAuth) {
-      autorize({
-        isAuth: !!data.token,
-        token: data.token
-      })
-
-      router.push('/')
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSuccess])
 
   return (
     <LayoutDefault session="Login">

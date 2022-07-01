@@ -57,3 +57,16 @@ export const productsCheckout = async (product: ICheckout) => {
     throw new Error('An unexpected error occurred')
   }
 }
+
+export const getMyProducts = async () => {
+  try {
+    const response = await api.get(`/checkout`)
+
+    return response.data
+  } catch (error) {
+    if (axios.isAxiosError(error))
+      throw new Error('Ouve um problema com a chamada ')
+
+    throw new Error('An unexpected error occurred')
+  }
+}

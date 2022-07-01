@@ -14,7 +14,6 @@ import { convertDate } from 'utils'
 import { IClient } from 'types'
 import { useRouter } from 'next/router'
 import { useAuth, useUser } from 'models'
-import { useEffect } from 'react'
 
 export default function TemplateCreate() {
   const router = useRouter()
@@ -23,24 +22,8 @@ export default function TemplateCreate() {
   const { userRegister } = useUser()
   const { autorize } = useAuth()
 
-  const { mutate, data, isLoading, isSuccess, error } =
-    useMutation(createNewClient)
-
-  const onSubmit = methods.handleSubmit(async (values) => {
-    const payload: IClient = {
-      birthdate: convertDate(values.birthdate),
-      cpf: values.cpf,
-      mail: values.mail,
-      name: values.name,
-      password: values.password,
-      phone: values.phone
-    }
-
-    mutate(payload)
-  })
-
-  useEffect(() => {
-    if (isSuccess) {
+  const { mutate, isLoading, error } = useMutation(createNewClient, {
+    onSuccess: (data) => {
       autorize({
         isAuth: !!data.token,
         token: data.token
@@ -54,8 +37,20 @@ export default function TemplateCreate() {
 
       router.push('/')
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSuccess])
+  })
+
+  const onSubmit = methods.handleSubmit(async (values) => {
+    const payload: IClient = {
+      birthdate: convertDate(values.birthdate),
+      cpf: values.cpf,
+      mail: values.mail,
+      name: values.name,
+      password: values.password,
+      phone: values.phone
+    }
+
+    mutate(payload)
+  })
 
   return (
     <LayoutDefault session="Login">
