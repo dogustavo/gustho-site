@@ -10,7 +10,6 @@ interface ITable {
   id: number
   status: string
   name: string
-  price: number
   total: number
 }
 
@@ -31,7 +30,7 @@ export default function Table({ data }: IProps) {
             <p>{cart.name}</p>
           </S.Product>
         </S.TD>
-        <S.TD>{convertMonetary(cart.price)}</S.TD>
+        <S.TD>{convertMonetary(cart.total)}</S.TD>
         <S.TD>{status[cart.status] || 'FINALIZADO'}</S.TD>
       </tr>
     )
@@ -44,10 +43,9 @@ export default function Table({ data }: IProps) {
           acc.push(
             el.products.map((product) => {
               return {
-                id: product.id,
+                id: Math.floor(Math.random() * 100),
                 status: el.status,
                 name: product.name,
-                price: product.price,
                 total: el.total
               }
             })

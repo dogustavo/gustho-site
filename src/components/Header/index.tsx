@@ -5,8 +5,7 @@ import { Container, Menu } from 'components'
 
 import * as S from './styles'
 import { useWindowSize } from 'hooks'
-import { useCheckout } from 'models/checkout/hooks'
-import { useAuth } from 'models'
+import { useAuth, useCheckout } from 'models'
 
 interface IButtons {
   children: ReactNode

@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { Button, Modal } from 'components'
 import { useUser } from 'models'
-import { useCheckout } from 'models/checkout/hooks'
-import { useNotification } from 'models/notification/hooks'
+import { useCheckout, useNotification } from 'models'
 import { IProduct } from 'types'
 import { convertMonetary } from 'utils'
 import * as S from './styles'
@@ -39,7 +38,8 @@ export default function Totals({ data }: IProps) {
 
   const handleTotalPrice = () => {
     const total = data?.reduce(
-      (acc: number, current: IProduct) => acc + current.price,
+      (acc: number, current: IProduct) =>
+        acc + current.price * current.quantity,
       0
     )
 

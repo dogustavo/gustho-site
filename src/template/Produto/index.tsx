@@ -6,8 +6,7 @@ import { IBreadcrumbs, IProductDetalied } from 'types'
 
 import * as S from './styles'
 import { useState } from 'react'
-import { useCheckout } from 'models/checkout/hooks'
-import { sendNotification } from 'models/notification/actions'
+import { useCheckout, useNotification } from 'models'
 
 import { useRouter } from 'next/router'
 
@@ -27,6 +26,7 @@ export default function Produto({ breadcrumbs, product }: IProps) {
   const [mainImage, setMainImage] = useState(product?.media[0]?.path)
 
   const { addToCart } = useCheckout()
+  const { sendNotification } = useNotification()
 
   const handleAddToCart = ({ data, type }: ISumbit) => {
     const { id, name, shortDescription, media, price, avaliable } = data

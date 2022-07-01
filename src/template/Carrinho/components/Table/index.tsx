@@ -10,46 +10,33 @@ interface IProps {
 export default function Table({ data }: IProps) {
   const { removeCartItem } = useCheckout()
 
-  const renderTableRow = (cart: IProduct) => {
-    return (
-      <tr key={cart.id}>
-        <S.TD>
-          <S.Product>
-            <S.Image>
-              <img
-                src={`https://gustho.nishiduka.dev/${cart.imgUrl}`}
-                alt={`Produto ${cart.name}`}
-              />
-            </S.Image>
-            <p>{cart.name}</p>
-          </S.Product>
-        </S.TD>
-        <S.TD>{cart.quantity}</S.TD>
-        <S.TD>{convertMonetary(cart.price * cart.quantity)}</S.TD>
-        <S.TD>
-          <button onClick={() => removeCartItem(cart.id.toString())}>
-            <img src="/static/img/trash.svg" alt="Icone de lata de lixo" />{' '}
-          </button>
-        </S.TD>
-      </tr>
-    )
+  const rederContent = () => {
+    return data?.map((cart) => (
+      <S.Content key={cart.id}>
+        <S.Body>
+          <S.Image>
+            <img
+              src={`https://gustho.nishiduka.dev/${cart.imgUrl}`}
+              alt={`Produto ${cart.name}`}
+            />
+          </S.Image>
+          <S.Wrapper>
+            <h3>{cart.name}</h3>
+
+            <div>
+              <p>{cart.shortDescription.split(';')[0]}</p>
+              <p>quantidade: {cart.quantity}</p>
+            </div>
+
+            <S.Button onClick={() => removeCartItem(cart.id.toString())}>
+              <img src="/static/img/trash.svg" alt="Icone de lata de lixo" />
+            </S.Button>
+          </S.Wrapper>
+          <S.Price>{convertMonetary(cart.price)}</S.Price>
+        </S.Body>
+      </S.Content>
+    ))
   }
 
-  const rederTableBody = () => {
-    return data?.map((cart) => renderTableRow(cart))
-  }
-
-  return (
-    <S.Container>
-      <thead>
-        <tr>
-          <S.TH>Produto</S.TH>
-          <S.TH>Quantidade</S.TH>
-          <S.TH>Valor</S.TH>
-          <th />
-        </tr>
-      </thead>
-      <tbody>{rederTableBody()}</tbody>
-    </S.Container>
-  )
+  return <S.Container>{rederContent()}</S.Container>
 }
