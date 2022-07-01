@@ -1,9 +1,9 @@
 import { createEvent, createEffect } from 'effector'
-import { ICart } from 'types'
+import { IProduct } from 'types'
 
 import { parseCookies } from 'nookies'
 
-export const addToCart = createEvent<ICart>()
+export const addToCart = createEvent<IProduct>()
 export const removeCartItem = createEvent<string>()
 
 export const getAllCartItems = createEffect(async () => {

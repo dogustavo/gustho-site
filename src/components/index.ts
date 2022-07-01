@@ -12,6 +12,7 @@ import Notification from './Toast'
 import Offer from './Offer'
 import Loading from './Loading'
 import AuthProvider from './Auth'
+import Pagination from './Pagination'
 
 export {
   Container,
@@ -27,5 +28,6 @@ export {
   Notification,
   Offer,
   Loading,
-  AuthProvider
+  AuthProvider,
+  Pagination
 }

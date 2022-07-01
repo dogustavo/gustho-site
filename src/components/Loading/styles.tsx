@@ -4,6 +4,7 @@ interface ILoading {
   box?: number
   size?: number
   border?: number
+  color?: string
 }
 
 export const Loading = styled.div<ILoading>`
@@ -20,10 +21,11 @@ export const Loading = styled.div<ILoading>`
     position: absolute;
     width: ${({ size }) => (size ? `${size}px` : '38px')};
     height: ${({ size }) => (size ? `${size}px` : '38px')};
-    border: ${({ border }) => (border ? `${border}px` : '4px')} solid #fff;
+    border: ${({ border }) => (border ? `${border}px` : '4px')} solid;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #fff transparent transparent transparent;
+    border-color: ${({ color }) => (color ? color : '#FFF')} transparent
+      transparent transparent;
   }
   div:nth-child(1) {
     animation-delay: -0.45s;

@@ -19,7 +19,7 @@ export default function TemplateLogin() {
   const methods = useForm({ resolver: yupResolver(schema) })
   const { autorize, isAuth } = useAuth()
 
-  const { mutate, data, isLoading, isSuccess, error } = useMutation(authLogin)
+  const { mutate, data, isLoading, isSuccess } = useMutation(authLogin)
 
   const onSubmit = methods.handleSubmit(async ({ mail, password }) => {
     mutate({ mail, password })
@@ -34,9 +34,9 @@ export default function TemplateLogin() {
 
       router.push('/')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSuccess])
 
-  //TO DO - TRATAMENTO DE ERRO LOGIN
   return (
     <LayoutDefault session="Login">
       <article>

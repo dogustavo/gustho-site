@@ -1,32 +1,51 @@
 export interface IProduct {
-  id: string
+  id: number
   name: string
-  slug: string
-  description: string
   price: number
-  image_url: string
+  shortDescription: string
+  avaliable: number
+  imgUrl: string
+  quantity: number
 }
 
 export interface IProductDetalied {
   id: string
+  metric: string
   name: string
-  slug: string
   price: number
   quantity: number
-  images: string[]
-  short_description: string
+  media: IMedia[]
+  avaliable: number
+  shortDescription: string
   description: string
-}
-
-export interface ICart {
-  id: string
-  name: string
-  slug: string
-  price: number
-  image_url: string
 }
 
 export interface IBreadcrumbs {
   route: string
   url: string
+}
+
+export interface IPrductsPaginate {
+  data: IProduct[]
+  limit: number
+  page: number
+  pages: number
+  total: number
+}
+
+export interface IFilter {
+  page: number
+  limit: number
+  search: string
+}
+
+interface IMedia {
+  createdAt: string
+  extension: string
+  filename: string
+  id: number
+  order: string
+  path: string
+  productId: number
+  updatedAt: string
 }

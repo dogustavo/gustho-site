@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { convertMonetary, priceDivided } from 'utils'
+import { convertMonetary } from 'utils'
 
 import * as S from './styles'
 
@@ -12,15 +12,23 @@ export default function Product(product: IProduct) {
   const { sendNotification } = useNotification()
 
   const handleAddToCart = (data: IProduct) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { description, ...rest } = data
+    const { id, name, shortDescription, avaliable, imgUrl, price } = data
+
+    addToCart({
+      id,
+      name,
+      shortDescription,
+      price,
+      avaliable,
+      imgUrl,
+      quantity: 1
+    })
 
     sendNotification({
       show: true,
-      message: `${rest.name} foi adicionado ao seu carrinho!`,
+      message: `${data.name} foi adicionado ao seu carrinho!`,
       type: 'success'
     })
-    addToCart(rest)
   }
 
   return (
@@ -31,18 +39,24 @@ export default function Product(product: IProduct) {
           alt="icone para adicionar ao carinho"
         />
       </S.Cart>
-      <Link href={`/produtos/${product.slug}`}>
+      <Link href={`/produtos/${product.id}`}>
         <S.Card>
-          <S.Image src={product.image_url} alt={`Produto ${product.name}`} />
+          <S.Image>
+            <img
+              src={`https://gustho.nishiduka.dev/${product.imgUrl}`}
+              alt={`Produto ${product.name}`}
+            />
+          </S.Image>
 
           <S.Wrapper>
             <S.Name>{product.name}</S.Name>
             <div>
               <S.Price>{convertMonetary(product.price)}</S.Price>
-              <p>{priceDivided(product.price, 6)}</p>
             </div>
 
-            <S.Description>{product.description}</S.Description>
+            <S.Description>
+              {product.shortDescription.split(';')[0]}
+            </S.Description>
           </S.Wrapper>
         </S.Card>
       </Link>

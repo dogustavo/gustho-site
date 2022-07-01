@@ -49,6 +49,8 @@ export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   transition: background 0.5s ease;
 
+  height: 130px;
+
   div {
     align-self: flex-start;
   }
@@ -59,7 +61,13 @@ export const Name = styled.p`
   font-weight: 700;
   font-size: 1.5rem;
   line-height: 1.2rem;
+  text-align: center;
   color: ${({ theme }) => theme.colors.pink};
+
+  width: 95%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `
 export const Price = styled.p`
   font-weight: 400;
@@ -111,21 +119,20 @@ export const Product = styled.div`
 export const Card = styled.a`
   ${baseDispleyStyles}
   box-shadow: -4px 6px 20px rgba(0, 0, 0, 0.1);
-  max-width: 270px;
-
-  @media (min-width: ${breakpoints.large}) {
-    max-width: 24rem;
-  }
-
-  @media (max-width: ${breakpoints.small}) {
-    min-width: 18rem;
-  }
+  width: 100%;
 `
 
-export const Image = styled.img`
-  width: 100%;
+export const Image = styled.div`
+  width: 16.8rem;
+  height: 14.7rem;
 
-  @media (min-width: ${breakpoints.large}) {
-    width: 24rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 `

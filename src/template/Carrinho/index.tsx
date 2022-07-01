@@ -3,14 +3,14 @@ import Link from 'next/link'
 
 import { LayoutDefault } from 'layout'
 import { Title, Container } from 'components'
-import { IBreadcrumbs, ICart } from 'types'
+import { IBreadcrumbs, IProduct } from 'types'
 
 import { Table, Totals, Form, Address } from './components'
 import * as S from './styles'
 
 interface IProps {
   breadcrumbs: IBreadcrumbs[]
-  cart: ICart[]
+  cart: IProduct[]
 }
 
 export default function Carrinho({ breadcrumbs, cart }: IProps) {
