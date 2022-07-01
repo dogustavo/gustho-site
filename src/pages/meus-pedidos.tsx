@@ -21,14 +21,14 @@ const products = [
     name: 'Tênis',
     slug: 'cantilever-chair7',
     price: 99.99,
-    image_url: 'https://dummyimage.com/270x240/8e009e/ffffff.png'
+    imgUrl: 'https://dummyimage.com/270x240/8e009e/ffffff.png'
   },
   {
     id: '1f550102-b805-11ec-b909-0242ac120012',
     name: 'Mouse',
     slug: 'cantilever-chair4',
     price: 50.01,
-    image_url: 'https://dummyimage.com/270x240/0a6100/ffffff.png'
+    imgUrl: 'https://dummyimage.com/270x240/0a6100/ffffff.png'
   }
 ]
 

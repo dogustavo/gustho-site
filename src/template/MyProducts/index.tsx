@@ -17,7 +17,7 @@ interface Products {
   name: string
   slug: string
   price: number
-  image_url: string
+  imgUrl: string
 }
 
 export default function MyProducts({ breadcrumbs, products }: IProps) {

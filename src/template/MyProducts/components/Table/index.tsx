@@ -1,13 +1,20 @@
-import { IProduct } from 'types'
 import { convertMonetary } from 'utils'
 import * as S from './styles'
 
 interface IProps {
-  data: IProduct[]
+  data: Products[]
+}
+
+interface Products {
+  id: string
+  name: string
+  slug: string
+  price: number
+  imgUrl: string
 }
 
 export default function Table({ data }: IProps) {
-  const renderTableRow = (cart: IProduct) => {
+  const renderTableRow = (cart: Products) => {
     return (
       <tr key={cart.id}>
         <S.TD>
