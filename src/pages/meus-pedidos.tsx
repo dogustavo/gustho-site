@@ -1,4 +1,12 @@
 import { MyProducts } from 'template'
+import { GetServerSideProps } from 'next'
+
+import { dehydrate, QueryClient, useQuery } from 'react-query'
+import { getAllOrders } from 'service'
+import { parseCookies } from 'nookies'
+
+import { useAuth } from 'models'
+import api from 'service'
 
 const breadcrumbs = [
   {
@@ -15,23 +23,36 @@ const breadcrumbs = [
   }
 ]
 
-const products = [
-  {
-    id: '1f55079c-b805-11ec-b909-0242ac120015',
-    name: 'Tênis',
-    slug: 'cantilever-chair7',
-    price: 99.99,
-    imgUrl: 'https://dummyimage.com/270x240/8e009e/ffffff.png'
-  },
-  {
-    id: '1f550102-b805-11ec-b909-0242ac120012',
-    name: 'Mouse',
-    slug: 'cantilever-chair4',
-    price: 50.01,
-    imgUrl: 'https://dummyimage.com/270x240/0a6100/ffffff.png'
-  }
-]
-
 export default function Products() {
-  return <MyProducts breadcrumbs={breadcrumbs} products={products} />
+  const { isAuth } = useAuth()
+  const { data: orders } = useQuery('getAllUserOrders', getAllOrders, {
+    enabled: isAuth
+  })
+
+  return <MyProducts breadcrumbs={breadcrumbs} products={orders?.data || []} />
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { userToken } = parseCookies(context)
+
+  const queryClient = new QueryClient()
+
+  if (userToken) {
+    api.defaults.headers.common.authorization = `Bearer ${userToken}`
+
+    await queryClient.prefetchQuery('getAllUserOrders', getAllOrders)
+
+    return {
+      props: {
+        dehydratedState: dehydrate(queryClient)
+      }
+    }
+  }
+
+  return {
+    redirect: {
+      destination: '/auth',
+      permanent: false
+    }
+  }
 }

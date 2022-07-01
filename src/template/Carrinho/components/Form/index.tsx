@@ -37,7 +37,12 @@ export default function Form({ isModalOpen, setIsModalOpen }: IForm) {
     }
   )
 
-  const { data: user, mutate, isSuccess } = useMutation(updateClient)
+  const { mutate } = useMutation(updateClient, {
+    onSuccess: (data) => {
+      setUserAddress(data.address)
+      setIsModalOpen(false)
+    }
+  })
 
   const onSubmit = async (values: IAddress) => {
     const payload = {
@@ -57,13 +62,6 @@ export default function Form({ isModalOpen, setIsModalOpen }: IForm) {
       methods.setValue('state', address?.data?.state)
     }
   }, [address, methods])
-
-  useEffect(() => {
-    if (isSuccess) {
-      setUserAddress(user.address)
-      setIsModalOpen(false)
-    }
-  }, [isSuccess])
 
   return (
     <Modal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)}>

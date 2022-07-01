@@ -1,8 +1,8 @@
+import { useState } from 'react'
 import { Button, Modal } from 'components'
 import { useUser } from 'models'
 import { useCheckout } from 'models/checkout/hooks'
 import { useNotification } from 'models/notification/hooks'
-import { useEffect, useState } from 'react'
 import { IProduct } from 'types'
 import { convertMonetary } from 'utils'
 import * as S from './styles'
@@ -24,7 +24,18 @@ export default function Totals({ data }: IProps) {
 
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const { mutate, isSuccess } = useMutation(productsCheckout)
+  const { mutate } = useMutation(productsCheckout, {
+    onSuccess: () => {
+      clearAllCartItems()
+      router.push('/meus-pedidos')
+
+      sendNotification({
+        show: true,
+        message: `Compra realizada com sucesso!`,
+        type: 'success'
+      })
+    }
+  })
 
   const handleTotalPrice = () => {
     const total = data?.reduce(
@@ -58,20 +69,6 @@ export default function Totals({ data }: IProps) {
 
     mutate(payload)
   }
-
-  useEffect(() => {
-    if (isSuccess) {
-      clearAllCartItems()
-      router.push('/meus-pedidos')
-
-      sendNotification({
-        show: true,
-        message: `Compra realizada com sucesso!`,
-        type: 'success'
-      })
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSuccess])
 
   return (
     <S.Wrapper>

@@ -54,23 +54,5 @@ export const Product = styled.div`
   @media (max-width: ${breakpoints.small}) {
     flex-direction: column-reverse;
     align-items: flex-start;
-
-    img {
-      width: 5rem;
-      height: 5rem;
-    }
-  }
-`
-export const Image = styled.div`
-  border-radius: 5px;
-  width: 6.2rem;
-  height: 6.2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  img {
-    width: 100%;
-    object-fit: contain;
   }
 `

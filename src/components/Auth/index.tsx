@@ -19,13 +19,18 @@ export default function Provider({ children }: IProvider) {
 
   const shouldFetch = authorization && (authorization as string)
 
-  const { data: user, isSuccess } = useQuery(
-    'fetchClientInfo',
-    fetchClientInfo,
-    {
-      enabled: !!shouldFetch
+  const { isSuccess } = useQuery('fetchClientInfo', fetchClientInfo, {
+    enabled: !!shouldFetch,
+    onSuccess: (data) => {
+      userRegister({
+        mail: data?.mail,
+        name: data?.name,
+        id: data?.userId.toString()
+      })
+
+      setUserAddress(data.address)
     }
-  )
+  })
 
   useEffect(() => {
     if (userToken) {
@@ -35,18 +40,8 @@ export default function Provider({ children }: IProvider) {
         isAuth: !!userToken,
         token: userToken
       })
-
-      if (isSuccess) {
-        userRegister({
-          mail: user?.mail,
-          name: user?.name,
-          id: user?.userId.toString()
-        })
-
-        setUserAddress(user.address)
-      }
     }
-  }, [isSuccess, userToken])
+  }, [userToken, isSuccess])
 
   return <>{children}</>
 }

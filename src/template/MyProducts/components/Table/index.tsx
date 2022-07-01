@@ -1,41 +1,63 @@
 import { convertMonetary } from 'utils'
 import * as S from './styles'
 
+import { IOrder } from 'types'
+
 interface IProps {
-  data: Products[]
+  data: IOrder[]
+}
+interface ITable {
+  id: number
+  status: string
+  name: string
+  price: number
+  total: number
 }
 
-interface Products {
-  id: string
-  name: string
-  slug: string
-  price: number
-  imgUrl: string
+interface TypeOptions {
+  [key: string]: string
+}
+
+const status: TypeOptions = {
+  paid: 'Pago'
 }
 
 export default function Table({ data }: IProps) {
-  const renderTableRow = (cart: Products) => {
+  const renderTableRow = (cart: ITable) => {
     return (
       <tr key={cart.id}>
         <S.TD>
           <S.Product>
-            <S.Image>
-              <img
-                src={`https://gustho.nishiduka.dev/${cart.imgUrl}`}
-                alt={`Produto ${cart.name}`}
-              />
-            </S.Image>
             <p>{cart.name}</p>
           </S.Product>
         </S.TD>
         <S.TD>{convertMonetary(cart.price)}</S.TD>
-        <S.TD>FINALIZADO</S.TD>
+        <S.TD>{status[cart.status] || 'FINALIZADO'}</S.TD>
       </tr>
     )
   }
 
   const rederTableBody = () => {
-    return data?.map((cart) => renderTableRow(cart))
+    return data
+      .reduce((acc: any, el): ITable[] => {
+        if (el.products) {
+          acc.push(
+            el.products.map((product) => {
+              return {
+                id: product.id,
+                status: el.status,
+                name: product.name,
+                price: product.price,
+                total: el.total
+              }
+            })
+          )
+        }
+
+        return acc
+      }, [])
+      .flat()
+      .map((el: ITable) => renderTableRow(el))
   }
 
   return (
