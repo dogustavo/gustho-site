@@ -4,8 +4,7 @@ import { convertMonetary } from 'utils'
 import * as S from './styles'
 
 import { IProduct } from 'types'
-import { useCheckout } from 'models/checkout/hooks'
-import { useNotification } from 'models/notification/hooks'
+import { useCheckout, useNotification } from 'models'
 
 export default function Product(product: IProduct) {
   const { addToCart } = useCheckout()

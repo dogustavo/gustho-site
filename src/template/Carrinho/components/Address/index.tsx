@@ -1,5 +1,6 @@
 import { Button } from 'components'
-import { useUser } from 'models/user/hooks'
+import { useRouter } from 'next/router'
+import { useAuth, useUser, useNotification } from 'models'
 
 import * as S from './styles'
 
@@ -8,7 +9,23 @@ interface IAddress {
 }
 
 export default function Address({ setIsModalOpen }: IAddress) {
+  const router = useRouter()
   const { address } = useUser()
+  const { isAuth } = useAuth()
+  const { sendNotification } = useNotification()
+
+  const handleUserAddress = () => {
+    if (!isAuth) {
+      router.push('/auth')
+      sendNotification({
+        show: true,
+        message: `Faça o login ou se cadastre para prosseguirmos!`,
+        type: 'info'
+      })
+    }
+
+    setIsModalOpen(true)
+  }
 
   return (
     <S.Address>
@@ -16,7 +33,7 @@ export default function Address({ setIsModalOpen }: IAddress) {
         <S.NoAddress>
           <p>Cadastre seu endereço para continuar</p>
 
-          <Button title="submit" onClick={() => setIsModalOpen(true)}>
+          <Button title="submit" onClick={handleUserAddress}>
             Cadastrar
           </Button>
         </S.NoAddress>

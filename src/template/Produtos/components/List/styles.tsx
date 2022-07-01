@@ -58,9 +58,7 @@ export const Form = styled.div`
   }
 
   @media (max-width: ${breakpoints.small}) {
-    form {
-      width: 100%;
-    }
+    width: 100%;
   }
 `
 

@@ -1,4 +1,4 @@
-import { useCheckout } from 'models/checkout/hooks'
+import { useCheckout } from 'models'
 import { Carrinho } from 'template'
 
 const breadcrumbs = [
