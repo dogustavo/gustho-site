@@ -63,7 +63,6 @@ export default function LayoutDefault({ children, session }: HeadProps) {
 
         <link rel="shortcut icon" href="/static/img/icon-512.png" />
         <link rel="apple-touch-icon" href="/static/img/icon-512.png" />
-        <link rel="manifest" href="/manifest.json" />
         <link rel="mask-icon" href="/static/img/logo.svg" color="#7E33E0" />
 
         <link rel="apple-touch-icon" href="/static/img/icon-512.png" />
@@ -82,6 +81,8 @@ export default function LayoutDefault({ children, session }: HeadProps) {
           sizes="167x167"
           href="/static/img/icon-512.png"
         />
+
+        <link rel="manifest" href="/manifest.json" />
       </Head>
 
       <Header />

@@ -11,7 +11,7 @@ interface IProducts {
 }
 
 export default function App({ product }: IProducts) {
-  const [filter, setFilter] = useState({
+  const [filter] = useState({
     page: product.page | 1,
     limit: product.limit | 15
   })
