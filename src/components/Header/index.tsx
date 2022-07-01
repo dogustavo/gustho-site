@@ -7,7 +7,6 @@ import * as S from './styles'
 import { useWindowSize } from 'hooks'
 import { useCheckout } from 'models/checkout/hooks'
 import { useAuth } from 'models'
-import Button from 'components/Button'
 
 interface IButtons {
   children: ReactNode
