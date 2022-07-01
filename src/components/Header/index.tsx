@@ -157,6 +157,9 @@ export default function Header() {
             <Link href="/sobre">
               <a>Sobre nós</a>
             </Link>
+            <Link href="/meus-pedidos">
+              <a>Meus pedidos</a>
+            </Link>
           </S.Nav>
         </S.NavWrapper>
       </Container>

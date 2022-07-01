@@ -19,7 +19,7 @@ export default function Provider({ children }: IProvider) {
 
   const shouldFetch = authorization && (authorization as string)
 
-  const {} = useQuery('fetchClientInfo', fetchClientInfo, {
+  const { isSuccess } = useQuery('fetchClientInfo', fetchClientInfo, {
     enabled: !!shouldFetch,
     onSuccess: (data) => {
       userRegister({
@@ -41,7 +41,7 @@ export default function Provider({ children }: IProvider) {
         token: userToken
       })
     }
-  }, [userToken])
+  }, [userToken, isSuccess])
 
   return <>{children}</>
 }

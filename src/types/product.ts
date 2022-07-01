@@ -33,6 +33,16 @@ export interface IPrductsPaginate {
   total: number
 }
 
+export interface IOrder {
+  clientAddressId: number
+  clientsId: number
+  createdAt: Date
+  id: number
+  products: IOrderProduct[]
+  status: string
+  total: number
+  updatedAt: Date
+}
 export interface IFilter {
   page: number
   limit: number
@@ -48,4 +58,15 @@ interface IMedia {
   path: string
   productId: number
   updatedAt: string
+}
+
+interface IOrderProduct extends IProduct {
+  CheckoutItemsDTO: {
+    checkoutId: number
+    createdAt: Date
+    productId: number
+    quantity: number
+    updatedAt: Date
+    valueUnit: number
+  }
 }

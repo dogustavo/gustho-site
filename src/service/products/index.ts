@@ -1,12 +1,18 @@
 import axios from 'axios'
 import api from 'service'
 
-import { IPrductsPaginate, IProduct } from 'types'
+import { IPrductsPaginate, IOrder } from 'types'
 
 interface IFilter {
   page?: number
   limit?: number
+  pages?: number
   search?: string
+  total?: number
+}
+
+interface IUserOrder extends IFilter {
+  data: IOrder[]
 }
 
 interface ICheckout {
@@ -58,9 +64,9 @@ export const productsCheckout = async (product: ICheckout) => {
   }
 }
 
-export const getMyProducts = async () => {
+export const getAllOrders = async () => {
   try {
-    const response = await api.get(`/checkout`)
+    const response = await api.get<IUserOrder>(`/checkout/all`)
 
     return response.data
   } catch (error) {
