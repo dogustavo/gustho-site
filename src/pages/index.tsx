@@ -13,7 +13,7 @@ interface IProducts {
 export default function App({ product }: IProducts) {
   const [filter] = useState({
     page: product.page | 1,
-    limit: product.limit | 15
+    limit: product.limit | 8
   })
 
   const { data: products } = useQuery(

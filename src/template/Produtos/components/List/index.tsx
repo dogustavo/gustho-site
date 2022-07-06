@@ -74,7 +74,7 @@ export default function List({
                 <span
                   onClick={() => {
                     methods.setValue('search', '')
-                    setFilter({ page: 1, limit: 15, search: '' })
+                    setFilter({ page: 1, limit: 12, search: '' })
                   }}
                 >
                   Limpar
