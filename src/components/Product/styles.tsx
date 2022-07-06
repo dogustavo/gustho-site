@@ -49,7 +49,7 @@ export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   transition: background 0.5s ease;
 
-  height: 130px;
+  height: 160px;
 
   div {
     align-self: flex-start;
@@ -60,7 +60,7 @@ export const Name = styled.p`
   font-family: 'Lato';
   font-weight: 700;
   font-size: 1.5rem;
-  line-height: 1.2rem;
+  line-height: 1.8rem;
   text-align: center;
   color: ${({ theme }) => theme.colors.pink};
 

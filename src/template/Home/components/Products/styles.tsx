@@ -3,17 +3,16 @@ import { breakpoints } from 'styles'
 
 export const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-gap: 2rem;
-  grid-row-gap: 4rem;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
 
   @media (max-width: ${breakpoints.medium}) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   @media (max-width: ${breakpoints.small}) {
-    grid-template-columns: none;
-    grid-template-rows: 1fr;
+    grid-template-columns: 100%;
   }
 `
